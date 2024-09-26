@@ -1,6 +1,6 @@
 ---
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -8,43 +8,171 @@ const { title } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+  :root {
+    --color-black: #000000;
+    --color-black-rgb: 0, 0, 0;
+    --color-white: #ffffff;
+    --color-white-rgb: 255, 255, 255;
+    --color-gray: #888888;
+    --color-gray-rgb: 136, 136, 136;
+    --color-red: #ff0000;
+    --color-red-rgb: 255, 0, 0;
+    --color-active: var(--color-red);
+
+    --color-body: var(--color-black);
+    --color-body-rgb: var(--color-black-rgb);
+    --color-body-couple: var(--color-white);
+    --color-body-couple-rgb: var(--color-white-rgb);
+    --color-theme: var(--color-red);
+    --color-theme-rgb: var(--color-red-rgb);
+    --color-theme-couple: var(--color-gray);
+    --color-theme-couple-rgb: var(--color-gray-rgb);
+
+    --filter-black: brightness(0);
+    --filter-white: brightness(0) invert(1);
+    --filter-body: var(--filter-black);
+    --filter-body-couple: var(--filter-white);
+
+    --rgb: var(--color-body-rgb);
+    --rgb-couple: var(--color-body-couple-rgb);
+    --filter: var(--filter-body);
+    --filter-couple: var(--filter-body-couple);
+
+    --font-body: "Euclid Circular B";
+    --font-heading: "Classico URW";
+    --font-weight-regular: normal;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+    --font-weight-black: 900;
+    --font-weight-body: var(--font-weight-light);
+
+    --font-size-3xs: 8px;
+    --font-size-2xs: 10px;
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-md: 16px;
+    --font-size-lg: 18px;
+    --font-size-xl: 20px;
+    --font-size-h6: 28px;
+    --font-size-h5: 40px;
+    --font-size-h4: 44px;
+    --font-size-h3: 80px;
+    --font-size-h2: 100px;
+    --font-size-h1: 120px;
+    --font-size-tagline1: 24px;
+    --font-size-tagline2: 22px;
+    --font-body-big: 32px;
+    --font-size-body: 22px;
+    --font-size-button: 20px;
+    --font-size-body-sub: var(--font-size-xs);
+    --font-size-navi: var(--font-size-lg);
+    --font-size-topic: var(--font-size-h5);
+
+    --line-height-xs: 1;
+    --line-height-sm: 1.2;
+    --line-height-md: 1.6;
+    --line-height-lg: 2;
+    --line-height-xl: 2.4;
+    --line-height-h6: 28px;
+    --line-heigt-h5: auto;
+    --line-height-h4: auto;
+    --line-height-h3: 64;
+    --line-height-h2: 70;
+    --line-height-h1: auto;
+    --line-height-tagline1: 24px;
+    --line-height-tagline2: 20px;
+    --line-height-body: 24px;
+    --line-height-button: 48px;
+    --line-height-nav: var(--line-height-md);
+    --line-height-topic: var(--line-height-sm);
+    --line-height-heading: var(--line-height-sm);
+
+    --letter-spacing: 0.45px;
+
+    --text-shadow-black: 0 0 0.65px var(--color-black),
+      0 0 0.65px var(--color-black);
+    --text-shadow-black-light: 0 0 0.42px var(--color-black),
+      0 0 0.42px var(--color-black);
+    --text-shadow-white: 0 0 1px var(--color-white), 0 0 1px var(--color-white);
+    --text-shadow-white: 0 0 0.7px var(--color-white),
+      0 0 0.7px var(--color-white);
+
+    --icon-size-xs: 16px;
+    --icon-size: 20px;
+    --icon-size-lg: 26px;
+    --icon-size-xl: 32px;
+
+    --spacing-7xl: 160px;
+    --spacing-6xl: 120px;
+    --spacing-5xl: 100px;
+    --spacing-4xl: 80px;
+    --spacing-3xl-plus: 64px;
+    --spacing-3xl: 60px;
+    --spacing-2xl-plus: 56px;
+    --spacing-2xl: 50px;
+    --spacing-xl: 40px;
+    --spacing-lg: 36px;
+    --spacing-md: 30px;
+    --spacing-sm: 24px;
+    --spacing-xs: 20px;
+    --spacing-2xs: 16px;
+    --spacing-3xs: 12px;
+    --spacing-4xs: 10px;
+    --spacing-5xs: 8px;
+    --spacing-6xs: 6px;
+    --spacing-container: 0px;
+    --spacing-x: 0px;
+    --spacing-y: 0px;
+
+    --logo-height: 36px;
+    --header-height: 56px;
+    --navi-height: 0px;
+
+    --border-width: 1px;
+    --border-style: solid;
+    --border-color: var(--color-gray);
+    --border: var(--border-width) var(--border-style) var(--border-color);
+
+    --input-height: 40px;
+    --input-spacing-x: 0px;
+    --input-spacing-y: 0.3em;
+    --input-border: var(--border-width) var(--border-style) var(--border-color);
+
+    --button-height: 40px;
+    --button-spacing-x: var(--spacing-sm);
+    --button-spacing-y: var(--spacing-3xs);
+
+    --addon-button-size: 58px;
+    --addon-icon-size: 32px;
+
+    --radius: 10px;
+    --radius-x2: 20px;
+    --opacity: 0.5;
+    --opacity-light: 0.15;
+    --duration: 0.3s;
+    --duration-x2: 0.5s;
+    --duration-x3: 1.5s;
+    --timing-function: ease-in-out;
+    --cta-shadow: 0 -1px 0px 0px inset;
+  }
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
 </style>
