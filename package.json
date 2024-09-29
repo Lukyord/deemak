@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "deemak",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -17,6 +17,7 @@
     "@sanity/client": "^6.22.0",
     "@sanity/image-url": "^1.0.2",
     "@sanity/types": "^3.58.0",
+    "@sanity/vision": "^3.58.0",
     "@sanity/visual-editing": "^2.1.10",
     "@types/react": "^18.3.9",
     "@types/react-dom": "^18.3.0",
