@@ -1238,7 +1238,6 @@ jQuery(function ($) {
   $(".header-menu-ctrl > .ctrl").click(function (e) {
     e.preventDefault();
     $("html").toggleClass("header-menu-enabled");
-    $("html, body").toggleClass("no-scroll");
     $(".header-menu-ctrl > .ctrl").toggleClass("active");
     $(".header-menu .panel-scroll").animate({ scrollTop: 0 });
   });
@@ -1246,7 +1245,6 @@ jQuery(function ($) {
   // Function to close the header menu
   function closeHeaderMenu() {
     $("html").removeClass("header-menu-enabled");
-    $("html, body").toggleClass("no-scroll");
     $(".header-menu-ctrl > .ctrl").removeClass("active");
     $(".header-menu").removeClass("active");
     setTimeout(function () {

@@ -41,6 +41,10 @@
     --spacing-10: min(0.6944444444vw, var(--10px));
     --spacing-8: min(0.5555555556vw, var(--8px));
     --spacing-6: min(0.4166666667vw, var(--6px));
+    --spacing-4: min(0.2777777778vw, var(--4px));
+    --spacing-container: min(2.5vw, var(--36px));
+    --button-spacing-y: var(--spacing-20);
+    --button-spacing-x: var(--spacing-36);
 
     --field-input-height: min(12.8205128205vw, var(--107px));
 

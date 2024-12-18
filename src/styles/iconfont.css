@@ -26,6 +26,27 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.ic-book:before {
+  content: "\e95d";
+}
+.ic-round-arrow-left:before {
+  content: "\e95e";
+}
+.ic-round-arrow-right:before {
+  content: "\e95f";
+}
+.ic-subscribe:before {
+  content: "\e960";
+}
+.ic-leaf:before {
+  content: "\e961";
+}
+.ic-lotus:before {
+  content: "\e962";
+}
+.ic-rocks:before {
+  content: "\e963";
+}
 .ic-person:before {
   content: "\e95c";
 }

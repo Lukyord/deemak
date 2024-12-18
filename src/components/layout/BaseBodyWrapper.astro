@@ -1,0 +1,17 @@
+---
+import Header from "@/components/layout/Header.astro";
+import Footer from "@/components/layout/Footer.astro";
+---
+
+<div id="page">
+  <Header />
+  <slot />
+  <Footer />
+</div>
+
+<div id="page-message">
+  <p>
+    For the best experience, we recommend viewing the site in portrait
+    orientation on mobile devices.
+  </p>
+</div>

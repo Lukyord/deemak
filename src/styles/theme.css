@@ -113,12 +113,17 @@
   --spacing-10: var(--10px);
   --spacing-8: var(--8px);
   --spacing-6: var(--6px);
-  --spacing-container: 0px;
+  --spacing-4: var(--4px);
+  --spacing-container: var(--spacing-20);
+  --button-spacing-y: var(--spacing-12);
+  --button-spacing-x: var(--spacing-24);
+  --button-gap-y: 0px;
+  --button-gap-x: var(--spacing-16);
 
-  --hamburger-width: 36px;
-  --hamburger-height: 36px;
+  --hamburger-width: 20px;
+  --hamburger-height: 20px;
   --hamburger-stroke-width: 2px;
-  --hamburger-gap: 8px;
+  --hamburger-gap: 6px;
   --hamburger-background: var(--color-theme);
   --header-height: var(--56px);
 
@@ -157,6 +162,44 @@
 .bg-theme ::selection {
   background: var(--color-white);
   color: var(--color-theme);
+}
+
+a {
+  color: inherit;
+}
+a,
+a:hover,
+a:focus {
+  outline: 0;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+p {
+  margin: 0;
 }
 
 button,
@@ -207,7 +250,7 @@ body {
   overflow-x: hidden;
   background-color: var(--color-body-couple);
   color: var(--color-body);
-  -webkit-animation-name: pageAnimation;
+  /* -webkit-animation-name: pageAnimation;
   animation-name: pageAnimation;
   -webkit-animation-duration: var(--duration-x3);
   animation-duration: var(--duration-x3);
@@ -217,7 +260,13 @@ body {
   animation-iteration-count: 1;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  will-change: opacity;
+  will-change: opacity; */
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @-webkit-keyframes pageAnimation {
@@ -297,6 +346,11 @@ body {
   color: var(--color-theme) !important;
   --rgb: var(--color-theme-rgb);
   --rgb-couple: var(--color-theme-couple-rgb);
+}
+.c-peach {
+  color: var(--color-peach) !important;
+  --rgb: var(--color-peach-rgb);
+  --rgb-couple: var(--color-white-rgb);
 }
 
 .font-body {
@@ -455,7 +509,6 @@ select,
 .explore,
 .container,
 #footer,
-#header,
 .object,
 .object-fit,
 .bg-img,
@@ -485,8 +538,7 @@ html.no-touchevents a:hover {
 }
 
 .button {
-  --gap-y: 0px;
-  --gap-x: var(--spacing-16);
+  --border-width: 1px;
   text-decoration: none !important;
   box-shadow: none !important;
   margin: 0;
@@ -503,30 +555,41 @@ html.no-touchevents a:hover {
   width: fit-content;
   min-width: 0;
   max-width: 100%;
-  height: var(--button-height);
+  height: auto;
   min-height: 0;
   max-height: none;
-  padding: var(--button-spacing-y) var(--button-spacing-x) !important;
-  opacity: 1 !important;
+  padding: var(--button-spacing-y) var(--button-spacing-x);
+  opacity: 1;
   color: rgba(var(--rgb), 1) !important;
-  background: none !important;
-  border: var(--border-width) solid var(--color-active) !important;
-  border-radius: 50vw !important;
+  border: var(--border-width) solid var(--button-border-color);
   overflow: hidden;
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-button);
   line-height: var(--line-height-button);
-  letter-spacing: var(--letter-spacing);
-  text-transform: uppercase;
   text-align: center;
   transition: var(--duration) var(--timing-function);
 }
+.button.primary {
+  --button-border-color: var(--color-theme);
+  --rgb: var(--color-peach-rgb);
+  background-color: var(--color-theme);
+}
 
-html.no-touchevents .button:hover {
+html.no-touchevents .button.primary:hover {
+  --rgb: var(--color-theme-rgb);
+  background-color: var(--color-peach);
+}
+
+.button.secondary {
+  --button-border-color: var(--color-black);
+  --rgb: var(--color-black-rgb);
+  background-color: var(--color-white);
+}
+
+html.no-touchevents .button.secondary:hover {
   --rgb: var(--color-white-rgb);
-  background-color: var(--color-active) !important;
-  border-color: var(--color-active) !important;
+  background-color: var(--color-black);
 }
 
 /* HAMBURGER ==================== */
@@ -585,10 +648,6 @@ html.no-touchevents .button:hover {
   transform: rotate(-90deg);
   transition-delay: 0s, 0s, 0s, 0.1s;
   background-color: var(--color-active);
-}
-
-html.page-scrolling .hamburger {
-  --hamburger-background: var(--color-active);
 }
 
 .ctrl:is(:hover) > .hamburger {
