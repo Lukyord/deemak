@@ -1,9 +1,9 @@
 ---
-import { PortableText } from "@portabletext/react";
+import { PortableText } from "astro-portabletext";
 
 const { body, components } = Astro.props;
 ---
 
-<div class=`body`>
+<div class="body">
   <PortableText value={body} components={components} />
 </div>

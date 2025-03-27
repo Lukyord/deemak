@@ -169,58 +169,58 @@ const isIndexPage = Astro.url.pathname === "/";
 </style>
 
 <script is:inline>
-  function initHeaderAnimation() {
-    jQuery(document).ready(function () {
-      const $header = $("#header");
-      const isIndexPage = $header.hasClass("index");
-      let lastScroll = 0;
-      let lastWidth = $(window).width();
+  // function initHeaderAnimation() {
+  //   jQuery(document).ready(function () {
+  //     const $header = $("#header");
+  //     const isIndexPage = $header.hasClass("index");
+  //     let lastScroll = 0;
+  //     let lastWidth = $(window).width();
 
-      $(window).on("scroll resize", function () {
-        const currentScroll = $(this).scrollTop();
-        const topOffset = $header.outerHeight() * 1.5;
-        const isMobile = $(window).width() <= 991;
-        const atTop = $header.hasClass("at-top");
+  //     $(window).on("scroll resize", function () {
+  //       const currentScroll = $(this).scrollTop();
+  //       const topOffset = $header.outerHeight() * 1.5;
+  //       const isMobile = $(window).width() <= 991;
+  //       const atTop = $header.hasClass("at-top");
 
-        if (currentScroll === 0 && isIndexPage && isMobile && !atTop) {
-          gsap.to($header, {
-            y: -topOffset,
-            duration: 0.3,
-            ease: "none",
-            onComplete: () => {
-              $header.addClass("at-top");
-              gsap.to($header, {
-                y: 0,
-                duration: 0.3,
-                ease: "none",
-                delay: 0.3,
-              });
-            },
-          });
-        } else if (currentScroll > lastScroll) {
-          gsap.to($header, {
-            y: -$header.outerHeight(),
-            duration: 0.3,
-            ease: "none",
-            onComplete: () => {
-              $header.removeClass("at-top");
-            },
-          });
-        } else if (currentScroll < lastScroll) {
-          gsap.to($header, {
-            y: 0,
-            duration: 0.3,
-            ease: "none",
-          });
-        }
+  //       if (currentScroll === 0 && isIndexPage && isMobile && !atTop) {
+  //         gsap.to($header, {
+  //           y: -topOffset,
+  //           duration: 0.3,
+  //           ease: "none",
+  //           onComplete: () => {
+  //             $header.addClass("at-top");
+  //             gsap.to($header, {
+  //               y: 0,
+  //               duration: 0.3,
+  //               ease: "none",
+  //               delay: 0.3,
+  //             });
+  //           },
+  //         });
+  //       } else if (currentScroll > lastScroll) {
+  //         gsap.to($header, {
+  //           y: -$header.outerHeight(),
+  //           duration: 0.3,
+  //           ease: "none",
+  //           onComplete: () => {
+  //             $header.removeClass("at-top");
+  //           },
+  //         });
+  //       } else if (currentScroll < lastScroll) {
+  //         gsap.to($header, {
+  //           y: 0,
+  //           duration: 0.3,
+  //           ease: "none",
+  //         });
+  //       }
 
-        lastScroll = currentScroll;
-        lastWidth = $(window).width();
-      });
-    });
-  }
+  //       lastScroll = currentScroll;
+  //       lastWidth = $(window).width();
+  //     });
+  //   });
+  // }
 
-  initHeaderAnimation();
+  // initHeaderAnimation();
 
-  document.addEventListener("astro:page-load", initHeaderAnimation);
+  // document.addEventListener("astro:page-load", initHeaderAnimation);
 </script>
