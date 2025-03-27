@@ -23,7 +23,7 @@ const isIndexPage = Astro.url.pathname === "/";
 
     <!-- Menu -->
     <div class="header-menu">
-      <div class="panel-overlay hidden-device-sm"></div>
+      <div class="panel-overlay hidden-device-md"></div>
       <div class="panel">
         <div class="wrapper">
           <div class="panel-scroll" data-lenis-prevent>
@@ -46,7 +46,7 @@ const isIndexPage = Astro.url.pathname === "/";
 
     <!-- CTA -->
     <div class="header-cta">
-      <a href="#outer" class="button primary show-md"> <span>Book Now</span></a>
+      <a href="#outer" class="button show-md"> <span>Book Now</span></a>
       <a href="#outer" class="book-mobile hidden-device-md"
         ><i class="ic ic-book"></i></a
       >
@@ -55,7 +55,14 @@ const isIndexPage = Astro.url.pathname === "/";
     <!-- Menu Ctrl -->
     <div class="header-menu-ctrl hidden-device-md">
       <a class="ctrl" href="javascript:;">
-        <span class="hamburger"><span class="bars">&nbsp;</span></span>
+        <span class="hamburger">
+          <span class="bars">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </span>
+        </span>
       </a>
     </div>
   </div>
@@ -78,14 +85,14 @@ const isIndexPage = Astro.url.pathname === "/";
     display: flex;
     align-items: center;
     padding: 0 var(--spacing-container);
-    padding-top: var(--spacing-16);
-    padding-bottom: var(--spacing-24);
+    padding-top: var(--spacing-xs);
+    padding-bottom: var(--spacing-2sm);
   }
 
   .header-logo {
-    height: var(--spacing-56);
+    height: 5.6rem;
     aspect-ratio: 4.1785714286;
-    margin-right: var(--spacing-40);
+    margin-right: var(--spacing-lg);
   }
 
   .header-menu {
@@ -94,7 +101,7 @@ const isIndexPage = Astro.url.pathname === "/";
 
   .header-menu .menu {
     display: flex;
-    grid-gap: var(--spacing-40);
+    grid-gap: var(--spacing-lg);
     align-items: center;
   }
 
@@ -105,6 +112,10 @@ const isIndexPage = Astro.url.pathname === "/";
       rgba(var(--color-peach-rgb), 1) 90%,
       rgba(var(--color-peach-rgb), 0.25) 100%
     );
+  }
+
+  .header-nav .index-logo {
+    cursor: pointer;
   }
 
   @media (min-width: 992px) {
@@ -136,17 +147,17 @@ const isIndexPage = Astro.url.pathname === "/";
 
     #header.index.at-top .header-logo {
       aspect-ratio: 1.09090909091;
-      height: var(--spacing-80);
+      height: var(--spacing-4xl);
     }
 
     #header.index:not(.at-top) .header-logo {
-      height: var(--spacing-40);
+      height: var(--spacing-lg);
     }
 
     .header-nav {
       display: flex;
       align-items: center;
-      padding: var(--spacing-20) var(--spacing-container);
+      padding: var(--spacing-sm) var(--spacing-container);
     }
 
     .header-cta .book-mobile {
