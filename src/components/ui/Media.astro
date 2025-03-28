@@ -1,0 +1,69 @@
+---
+interface Props {
+  cover: string;
+  coverMobile?: string;
+  coverType?:
+    | "object-fit"
+    | "object-auto"
+    | "object-contain"
+    | "object-fill-height"
+    | "object-fill-width";
+}
+
+const { cover, coverMobile = cover, coverType = "object-fit" } = Astro.props;
+
+const isImage = (url: string) => /\.(jpg|png)$/i.test(url);
+const isVideo = (url: string) => /\.(mp4)$/i.test(url);
+
+const isImageCover = isImage(cover);
+const isImageCoverM = isImage(coverMobile);
+const isVideoCover = isVideo(cover);
+const isVideoCoverM = isVideo(coverMobile);
+---
+
+{
+  cover ? (
+    <>
+      {isImageCover && isImageCoverM ? (
+        <picture class={coverType}>
+          <source media="(min-width:992px)" srcset={cover} />
+          <source media="(min-width:0px)" srcset={coverMobile} />
+          <img src={cover} alt="" />
+        </picture>
+      ) : isVideoCover && isVideoCoverM ? (
+        <figure class={coverType}>
+          <video
+            playsinline
+            autoplay
+            muted
+            loop
+            src=""
+            class="vdojs"
+            data-vdo-src={cover}
+            data-vdo-srcset={coverMobile}
+          />
+        </figure>
+      ) : (
+        <>
+          <figure class={`${coverType} show-md`}>
+            {isVideoCover ? (
+              <video playsinline autoplay muted loop src={cover} />
+            ) : (
+              <img src={cover} alt="" />
+            )}
+          </figure>
+
+          <figure class={`${coverType} hidden-device-md`}>
+            {isVideoCoverM ? (
+              <video playsinline autoplay muted loop src={coverMobile} />
+            ) : (
+              <img src={coverMobile} alt="" />
+            )}
+          </figure>
+        </>
+      )}
+    </>
+  ) : (
+    <p>No media available.</p>
+  )
+}

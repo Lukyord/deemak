@@ -1,6 +1,5 @@
 ---
-import Logo from "@/assets/img/logo.png";
-import LogoMPeach from "@/assets/img/logo-m.png";
+import { Images } from "@/constant/Images";
 import { Image } from "astro:assets";
 
 const isIndexPage = Astro.url.pathname === "/";
@@ -11,9 +10,14 @@ const isIndexPage = Astro.url.pathname === "/";
     <!-- Logo -->
     <div class="header-logo">
       <a href="/">
-        <Image src={Logo} alt="Logo" draggable="false" class="main-logo" />
         <Image
-          src={LogoMPeach}
+          src={Images.Logo}
+          alt="Logo"
+          draggable="false"
+          class="main-logo"
+        />
+        <Image
+          src={Images.LogoPeach}
           alt="Logo"
           draggable="false"
           class="index-logo"
@@ -35,9 +39,15 @@ const isIndexPage = Astro.url.pathname === "/";
                   <li><a href="/journals">Journals</a></li>
                   <li><a href="/location">Location</a></li>
                 </ul>
-              </div>
 
-              <div class="panel-footer hidden-device-md"></div>
+                <div class="panel-footer hidden-device-md"></div>
+              </div>
+              <div class="panel-footer hidden-device-md">
+                <div class="social">
+                  <i class="ic ic-instagram"></i>
+                  <i class="ic ic-facebook"></i>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -173,65 +183,29 @@ const isIndexPage = Astro.url.pathname === "/";
       flex-grow: 0;
     }
 
+    .header-menu .menu {
+      flex-direction: column;
+      color: var(--color-peach);
+      align-items: flex-start;
+      font-size: var(--font-size-h5);
+      line-height: var(--line-height-h5);
+    }
+
+    .panel-container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: var(--spacing-lg) var(--spacing-container);
+      padding-top: var(--spacing-6xl);
+    }
+
+    .panel-footer .social {
+      color: var(--color-peach);
+    }
+
     .header-menu-ctrl {
       order: 3;
     }
   }
 </style>
-
-<script is:inline>
-  // function initHeaderAnimation() {
-  //   jQuery(document).ready(function () {
-  //     const $header = $("#header");
-  //     const isIndexPage = $header.hasClass("index");
-  //     let lastScroll = 0;
-  //     let lastWidth = $(window).width();
-
-  //     $(window).on("scroll resize", function () {
-  //       const currentScroll = $(this).scrollTop();
-  //       const topOffset = $header.outerHeight() * 1.5;
-  //       const isMobile = $(window).width() <= 991;
-  //       const atTop = $header.hasClass("at-top");
-
-  //       if (currentScroll === 0 && isIndexPage && isMobile && !atTop) {
-  //         gsap.to($header, {
-  //           y: -topOffset,
-  //           duration: 0.3,
-  //           ease: "none",
-  //           onComplete: () => {
-  //             $header.addClass("at-top");
-  //             gsap.to($header, {
-  //               y: 0,
-  //               duration: 0.3,
-  //               ease: "none",
-  //               delay: 0.3,
-  //             });
-  //           },
-  //         });
-  //       } else if (currentScroll > lastScroll) {
-  //         gsap.to($header, {
-  //           y: -$header.outerHeight(),
-  //           duration: 0.3,
-  //           ease: "none",
-  //           onComplete: () => {
-  //             $header.removeClass("at-top");
-  //           },
-  //         });
-  //       } else if (currentScroll < lastScroll) {
-  //         gsap.to($header, {
-  //           y: 0,
-  //           duration: 0.3,
-  //           ease: "none",
-  //         });
-  //       }
-
-  //       lastScroll = currentScroll;
-  //       lastWidth = $(window).width();
-  //     });
-  //   });
-  // }
-
-  // initHeaderAnimation();
-
-  // document.addEventListener("astro:page-load", initHeaderAnimation);
-</script>

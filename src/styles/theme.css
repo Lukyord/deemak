@@ -445,7 +445,7 @@
   display: block;
   padding: 1px;
   margin: -1px;
-  font-size: var(--icon-size-xs);
+  font-size: var(--icon-size-md);
 }
 
 .padding-top-0 {
@@ -551,7 +551,7 @@ body {
   position: relative;
   min-height: 100svh;
   overflow-x: hidden;
-  background: var(--color-white);
+  background: var(--color-pale-red);
   color: var(--color-body);
   -webkit-animation-name: pageAnimation;
   animation-name: pageAnimation;
@@ -2451,6 +2451,9 @@ section {
   margin-right: auto;
   padding-left: var(--spacing-container);
   padding-right: var(--spacing-container);
+}
+.container.xl {
+  max-width: var(--max-width-xl);
 }
 .wrapper {
   width: 100%;

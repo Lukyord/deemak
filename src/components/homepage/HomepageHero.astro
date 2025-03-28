@@ -1,0 +1,151 @@
+---
+import Media from "../ui/Media.astro";
+import { getActiveAnnouncement } from "@/services/index";
+
+const announcement = await getActiveAnnouncement();
+---
+
+<section data-section="homepage-hero">
+  <div class="sc-billboard full-screen">
+    <div class="cover">
+      <Media
+        cover={"/media/homepage-hero-banner.webp"}
+        coverMobile={"/media/homepage-hero-banner-mb.webp"}
+        coverType="object-fit"
+      />
+    </div>
+
+    <div class="content">
+      <div class="screen-text-wrapper">
+        {
+          announcement && (
+            <div class="announcement">
+              {announcement.link && (
+                <a href={announcement.link} class="link-overlay">
+                  &nbsp;
+                </a>
+              )}
+
+              <h5>{announcement.text}</h5>
+            </div>
+          )
+        }
+        <p class="screen-text">
+          <span class="large">D</span><span>e</span><span>e</span>
+          <br class="hidden-device-md" />
+          <span class="large">M</span><span>a</span><span>k</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  [data-section="homepage-hero"] .cover::before,
+  [data-section="homepage-hero"] .cover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    z-index: 1;
+  }
+
+  [data-section="homepage-hero"] .cover::after {
+    bottom: 0;
+    background: linear-gradient(to top, var(--color-black), transparent);
+  }
+
+  [data-section="homepage-hero"] .content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    z-index: 5;
+  }
+
+  [data-section="homepage-hero"] .screen-text-wrapper {
+    position: relative;
+    z-index: 1;
+  }
+
+  [data-section="homepage-hero"] .announcement {
+    position: absolute;
+    top: 0;
+    left: 75%;
+    transform: translateY(-100%);
+    width: 27rem;
+    aspect-ratio: 1;
+    z-index: 1;
+    rotate: 5deg;
+    border-radius: 50%;
+    background-color: var(--color-deep-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    color: var(--color-white);
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  [data-section="homepage-hero"] .screen-text {
+    display: inline-flex;
+    align-items: flex-end;
+    font-size: 11vw;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-pale-red);
+    font-family: var(--font-heading);
+    line-height: 0.68;
+    margin-left: -2.3vw;
+  }
+
+  [data-section="homepage-hero"] .screen-text span.large {
+    display: inline-block;
+    font-size: 37vw;
+  }
+
+  @media (max-width: 991px) {
+    [data-section="homepage-hero"] .cover::before,
+    [data-section="homepage-hero"] .cover::after {
+      height: 40%;
+    }
+
+    [data-section="homepage-hero"] .cover::before {
+      top: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(var(--color-black-rgb), 0.75),
+        transparent
+      );
+    }
+
+    [data-section="homepage-hero"] .announcement {
+      top: 18%;
+      left: 45%;
+      width: 18rem;
+    }
+
+    [data-section="homepage-hero"] .screen-text {
+      display: inline;
+      font-size: 30vw;
+      width: 100vw;
+      justify-content: flex-end;
+      margin-left: 0;
+    }
+
+    [data-section="homepage-hero"] .screen-text span.large {
+      font-size: 45vw;
+    }
+
+    [data-section="homepage-hero"] .screen-text span:nth-child(-n + 3) {
+      line-height: 0.86;
+      justify-self: flex-start;
+      margin-left: -3vw;
+    }
+
+    [data-section="homepage-hero"] .screen-text span:nth-child(5) {
+      margin-left: 10vw;
+    }
+  }
+</style>
