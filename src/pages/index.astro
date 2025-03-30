@@ -7,8 +7,6 @@ import {
   getJournals,
   getJournalAuthors,
 } from "@/services/journal";
-import { urlFor } from "@/lib/sanity";
-
 import type {
   Journal,
   JournalAuthor,
@@ -16,6 +14,7 @@ import type {
   Service,
 } from "~/sanity/sanity.types";
 
+import "@/styles/index.css";
 import ScHomepageHero from "@/components/homepage/sc-HomepageHero.astro";
 import ScFeaturedTreatment from "@/components/homepage/sc-FeaturedTreatment.astro";
 

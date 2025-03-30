@@ -80,50 +80,6 @@ export type IndexAnnouncement = {
   isActive?: boolean
 }
 
-export type Service = {
-  _id: string
-  _type: 'service'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  title?: string
-  slug?: Slug
-  mainImage?: {
-    asset?: {
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-    }
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-  shortDescription?: string
-  description1?: string
-  description2?: string
-  highlight?: string
-  pricingOptions?: Array<{
-    time?: number
-    timeUnit?: 'minutes' | 'hours'
-    price?: number
-    _key: string
-  }>
-  expectationImage?: {
-    asset?: {
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-    }
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-  expectation?: string
-  benefits?: Array<string>
-}
-
 export type Team = {
   _id: string
   _type: 'team'
@@ -148,6 +104,8 @@ export type Team = {
     }
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
+    alt?: string
+    title?: string
     _type: 'image'
   }
 }
@@ -172,11 +130,31 @@ export type BlockContent = Array<
       }>
       style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote'
       listItem?: 'bullet'
-      markDefs?: Array<{
-        href?: string
-        _type: 'link'
-        _key: string
-      }>
+      markDefs?: Array<
+        | {
+            href?: string
+            blank?: boolean
+            _type: 'link'
+            _key: string
+          }
+        | {
+            reference?:
+              | {
+                  _ref: string
+                  _type: 'reference'
+                  _weak?: boolean
+                  [internalGroqTypeReferenceTo]?: 'journal'
+                }
+              | {
+                  _ref: string
+                  _type: 'reference'
+                  _weak?: boolean
+                  [internalGroqTypeReferenceTo]?: 'service'
+                }
+            _type: 'internalLink'
+            _key: string
+          }
+      >
       level?: number
       _type: 'block'
       _key: string
@@ -190,6 +168,8 @@ export type BlockContent = Array<
       }
       hotspot?: SanityImageHotspot
       crop?: SanityImageCrop
+      alt?: string
+      title?: string
       _type: 'image'
       _key: string
     }
@@ -228,6 +208,8 @@ export type Journal = {
     }
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
+    alt?: string
+    title?: string
     _type: 'image'
   }
   categories?: Array<{
@@ -239,6 +221,54 @@ export type Journal = {
   }>
   publishedAt?: string
   body?: BlockContent
+}
+
+export type Service = {
+  _id: string
+  _type: 'service'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  title?: string
+  slug?: Slug
+  mainImage?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    title?: string
+    _type: 'image'
+  }
+  shortDescription?: string
+  description1?: string
+  description2?: string
+  highlight?: string
+  pricingOptions?: Array<{
+    time?: number
+    timeUnit?: 'minutes' | 'hours'
+    price?: number
+    _key: string
+  }>
+  expectationImage?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    title?: string
+    _type: 'image'
+  }
+  expectation?: string
+  benefits?: Array<string>
 }
 
 export type JournalAuthor = {
@@ -258,6 +288,8 @@ export type JournalAuthor = {
     }
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
+    alt?: string
+    title?: string
     _type: 'image'
   }
   bio?: Array<{
@@ -350,12 +382,12 @@ export type AllSanitySchemaTypes =
   | SanityFileAsset
   | Geopoint
   | IndexAnnouncement
-  | Service
   | Team
   | TeamRole
   | BlockContent
   | JournalCategory
   | Journal
+  | Service
   | JournalAuthor
   | SanityImageCrop
   | SanityImageHotspot

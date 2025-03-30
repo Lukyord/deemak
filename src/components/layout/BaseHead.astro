@@ -7,6 +7,7 @@ import "@/styles/theme-rwd.css";
 import "@/styles/theme-default.css";
 import "@/styles/iconfont.css";
 import "@/styles/library/animate.min.css";
+import "@/lib/plugin/swiper/swiper-bundle.min.css";
 
 interface Props {
   title: string;
@@ -71,5 +72,6 @@ const { title, description, image = "/og.jpg" } = Astro.props;
 <!-- SCRIPTS -->
 <script src="../../lib/util.js"></script>
 <script src="../../lib/theme.js"></script>
+<script src="../../lib/plugin/swiper/swiper-bundle.min.js"></script>
 
 <ViewTransitions />

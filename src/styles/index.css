@@ -1,0 +1,64 @@
+/* PAGE */
+/* PAGE: INDEX */
+
+/* SECTION */
+/* SECTION: FEATURED TREATMENT */
+[data-section="featured-treatment"] .sc-header {
+  margin-top: var(--gap-section);
+}
+
+[data-section="featured-treatment"] .card-container.pc-slide {
+  --column: 2;
+  --gap-y: var(--spacing-lg);
+  --gap-x: var(--spacing-lg);
+}
+
+[data-card="featured-service"] {
+  aspect-ratio: 1.9053254438;
+  overflow: hidden;
+}
+
+[data-card="featured-service"] .cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(var(--color-black-rgb), 0.5);
+  z-index: 1;
+  transition: var(--duration) var(--timing-function);
+}
+
+html.no-touchevents [data-card="featured-service"]:hover .cover {
+  scale: 1.1;
+}
+
+html.no-touchevents [data-card="featured-service"]:hover .cover::before {
+  background-color: rgba(var(--color-black-rgb), 0.25);
+}
+
+[data-card="featured-service"] .card-ttl {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  color: var(--color-white);
+  font-family: var(--font-body);
+  width: 100%;
+  text-align: center;
+  padding: 0 var(--spacing-md);
+}
+
+@media (max-width: 991px) {
+  [data-section="featured-treatment"] .card-container.mb-slide {
+    --column: 1.3;
+    --gap-y: var(--spacing-3xs);
+  }
+
+  [data-section="featured-treatment"] .card-container.mb-slide .swiper {
+    overflow: visible;
+  }
+
+  [data-card="featured-service"] {
+    aspect-ratio: 0.7792207792;
+  }
+}

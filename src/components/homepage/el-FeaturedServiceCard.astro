@@ -1,0 +1,29 @@
+---
+import { urlFor } from "@/lib/sanity";
+import Media from "../ui/Media.astro";
+import type { Service } from "~/sanity/sanity.types";
+
+type Props = {
+  service: Service;
+};
+
+const { service } = Astro.props as Props;
+---
+
+<div class="card" data-card="featured-service">
+  <a href={`/services/${service.slug?.current}`} class="link-overlay">
+    &nbsp;
+  </a>
+
+  <div class="cover">
+    <Media
+      cover={urlFor(service.mainImage?.asset?._ref || "").url()}
+      alt={service.title}
+      title={service.title}
+      coverType="object-fit"
+    />
+  </div>
+  <div class="card-ttl">
+    <h4>{service.title}</h4>
+  </div>
+</div>

@@ -1,11 +1,94 @@
 ---
 import ElServiceMarquee from "../common/el-ServiceMarquee.astro";
+
+import { getServices } from "@/services/service";
+import type { Service } from "~/sanity/sanity.types";
+import Media from "../ui/Media.astro";
+import { urlFor } from "@/lib/sanity";
+import ElFeaturedServiceCard from "./el-FeaturedServiceCard.astro";
+
+const services: Service[] = await getServices();
 ---
 
 <section data-section="featured-treatment">
   <div class="sc-inner">
     <div class="container xl">
-      <ElServiceMarquee />
+      <ElServiceMarquee services={services} />
+
+      <div class="sc-header justify-between">
+        <div class="sc-header-text">
+          <div class="sc-ttl animate fadeIn">
+            <h2>Treatments we offer</h2>
+          </div>
+          <div class="sc-subttl animate fadeIn">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+          </div>
+        </div>
+
+        <a href="/services" class="button"> <span>Book Now</span></a>
+      </div>
+
+      <!-- PC Swiper -->
+      <div class="show-md">
+        <div class="swiper auto fade">
+          <div class="swiper-wrapper">
+            {
+              services
+                .reduce(
+                  (slides: Service[][], service: Service, index: number) => {
+                    const slideIndex = Math.floor(index / 4);
+                    if (!slides[slideIndex]) {
+                      slides[slideIndex] = [];
+                    }
+                    slides[slideIndex].push(service);
+                    return slides;
+                  },
+                  [],
+                )
+                .map((slideServices) => (
+                  <div class="swiper-slide">
+                    <div
+                      class="card-container pc-slide"
+                      data-card-layout="grid"
+                    >
+                      {slideServices.map((service) => (
+                        <ElFeaturedServiceCard service={service} />
+                      ))}
+                    </div>
+                  </div>
+                ))
+            }
+          </div>
+          <div class="swiper-nav">
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Swiper -->
+      <div class="hidden-device-sm">
+        <div class="card-container mb-slide" data-card-layout="slider">
+          <div
+            class="swiper auto centered-m autoplay"
+            data-autoplayInterval="3000"
+          >
+            <div class="swiper-wrapper">
+              {
+                services.map((service) => (
+                  <div class="swiper-slide">
+                    <ElFeaturedServiceCard service={service} />
+                  </div>
+                ))
+              }
+            </div>
+            <div class="swiper-nav">
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

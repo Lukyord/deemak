@@ -13,7 +13,7 @@
     "sanity:undeploy": "sanity undeploy",
     "sanity:dev": "sanity dev",
     "sanity:schema": "sanity schema extract --path ./cms-sanity/schema.json",
-    "sanity:generate": "sanity schema extract --path ./cms-sanity/schema.json && sanity typegen generate"
+    "sanity:generate": "sanity schema extract --path ./cms-sanity/schema.json && sanity typegen generate --schema ./cms-sanity/schema.json --output ./cms-sanity/sanity.types.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

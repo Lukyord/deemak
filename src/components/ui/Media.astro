@@ -2,6 +2,8 @@
 interface Props {
   cover: string;
   coverMobile?: string;
+  alt?: string;
+  title?: string;
   coverType?:
     | "object-fit"
     | "object-auto"
@@ -10,7 +12,13 @@ interface Props {
     | "object-fill-width";
 }
 
-const { cover, coverMobile = cover, coverType = "object-fit" } = Astro.props;
+const {
+  cover,
+  coverMobile = cover,
+  coverType = "object-fit",
+  alt,
+  title,
+} = Astro.props;
 
 const isImage = (url: string) => /\.(jpg|png)$/i.test(url);
 const isVideo = (url: string) => /\.(mp4)$/i.test(url);
@@ -28,7 +36,7 @@ const isVideoCoverM = isVideo(coverMobile);
         <picture class={coverType}>
           <source media="(min-width:992px)" srcset={cover} />
           <source media="(min-width:0px)" srcset={coverMobile} />
-          <img src={cover} alt="" />
+          <img src={cover} alt={alt} title={title} />
         </picture>
       ) : isVideoCover && isVideoCoverM ? (
         <figure class={coverType}>
@@ -49,7 +57,7 @@ const isVideoCoverM = isVideo(coverMobile);
             {isVideoCover ? (
               <video playsinline autoplay muted loop src={cover} />
             ) : (
-              <img src={cover} alt="" />
+              <img src={cover} alt={alt} title={title} />
             )}
           </figure>
 
@@ -57,7 +65,7 @@ const isVideoCoverM = isVideo(coverMobile);
             {isVideoCoverM ? (
               <video playsinline autoplay muted loop src={coverMobile} />
             ) : (
-              <img src={coverMobile} alt="" />
+              <img src={coverMobile} alt={alt} title={title} />
             )}
           </figure>
         </>

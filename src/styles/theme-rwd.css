@@ -70,6 +70,12 @@
     --header-height: min(7.6388888889vw, 11rem);
   }
 
+  .sc-header {
+    flex-direction: column;
+    grid-gap: var(--spacing-lg);
+    align-items: flex-start;
+  }
+
   /* HEADER ==================== */
 
   /* FOOTER ==================== */

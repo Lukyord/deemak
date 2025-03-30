@@ -1,9 +1,11 @@
 ---
-import { getServices } from "@/services/service";
-
 import type { Service } from "~/sanity/sanity.types";
 
-const services: Service[] = await getServices();
+type Props = {
+  services: Service[];
+};
+
+const { services }: Props = Astro.props;
 ---
 
 <div class="marquee">

@@ -48,6 +48,76 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+/*::* SLIDER *::*/
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".swiper.auto").forEach((swiperEl) => {
+    const slideTotal = swiperEl.querySelectorAll(".swiper-slide").length;
+    const slideLoop = swiperEl.classList.contains("loop") && slideTotal > 1;
+    const slideAutoplay = swiperEl.classList.contains("autoplay");
+    const slideCenterInsufficient = swiperEl.classList.contains("insufficient");
+    const slideToClick = swiperEl.classList.contains("click");
+    const noTouchMove = swiperEl.classList.contains("no-touch");
+    const slidesPerGroup = parseInt(swiperEl.dataset.slidespergroup, 10) || 1;
+    const autoPlayInterval =
+      parseInt(swiperEl.dataset.autoplayinterval, 10) || 8000;
+    const activeIndex = [
+      ...swiperEl.querySelectorAll(".swiper-slide"),
+    ].findIndex((slide) => slide.classList.contains("active"));
+
+    const swiper = new Swiper(swiperEl, {
+      resistanceRatio: 0,
+      spaceBetween: 0,
+      grabCursor: true,
+      pagination: {
+        el: swiperEl.querySelector(".swiper-pagination"),
+        type: swiperEl.querySelector(".swiper-pagination.custom")
+          ? "custom"
+          : "bullets",
+        clickable: !swiperEl.querySelector(".swiper-pagination.custom"),
+      },
+      navigation: {
+        nextEl:
+          swiperEl.querySelector(".swiper-button-next") ||
+          document.querySelector(".swiper-button-global-next"),
+        prevEl:
+          swiperEl.querySelector(".swiper-button-prev") ||
+          document.querySelector(".swiper-button-global-prev"),
+      },
+      effect: swiperEl.classList.contains("fade") ? "fade" : "slide",
+      fadeEffect: { crossFade: swiperEl.classList.contains("fade") },
+      loop: slideLoop,
+      speed: 1000,
+      autoplay: slideAutoplay
+        ? { delay: autoPlayInterval, disableOnInteraction: false }
+        : false,
+      slidesPerView: "auto",
+      centeredSlides: swiperEl.classList.contains("centered-m"),
+      centerInsufficientSlides: slideCenterInsufficient,
+      watchSlidesProgress: true,
+      slideToClickedSlide: slideToClick,
+      allowTouchMove: !noTouchMove,
+      watchSlidesVisibility: true,
+      breakpoints: {
+        768: {
+          centeredSlides: swiperEl.classList.contains("centered"),
+          slidesPerGroup: slidesPerGroup,
+        },
+      },
+      on: {
+        init: function () {
+          if (activeIndex !== -1) this.slideTo(activeIndex, 0, false);
+        },
+      },
+    });
+
+    setTimeout(() => {
+      swiper.init();
+      swiper.autoplay.stop();
+      if (slideAutoplay) swiper.autoplay.start();
+    }, 100);
+  });
+});
+
 /*::* HEADER *::*/
 document.addEventListener("DOMContentLoaded", () => {
   // Header Menu Toggle
