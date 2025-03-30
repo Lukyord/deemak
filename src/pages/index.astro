@@ -16,7 +16,8 @@ import type {
   Service,
 } from "~/sanity/sanity.types";
 
-import HomepageHero from "@/components/homepage/HomepageHero.astro";
+import ScHomepageHero from "@/components/homepage/sc-HomepageHero.astro";
+import ScFeaturedTreatment from "@/components/homepage/sc-FeaturedTreatment.astro";
 
 const services: Service[] = await getServices();
 const categories: JournalCategory[] = await getJournalCategories();
@@ -26,7 +27,9 @@ const authors: JournalAuthor[] = await getJournalAuthors();
 
 <Layout title="Deemak Thai Massage">
   <main>
-    <HomepageHero />
+    <ScHomepageHero />
+
+    <ScFeaturedTreatment />
 
     <section style="height: 100svh;"></section>
   </main>

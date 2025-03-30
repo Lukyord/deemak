@@ -2486,7 +2486,7 @@ section {
   padding-right: var(--spacing-container);
 }
 .container.xl {
-  max-width: var(--max-width-xl);
+  max-width: var(--container-max-width-xl);
 }
 .wrapper {
   width: 100%;

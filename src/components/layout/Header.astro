@@ -87,6 +87,15 @@ const isIndexPage = Astro.url.pathname === "/";
     z-index: 100;
   }
 
+  #header:not(.at-top) {
+    background: linear-gradient(
+      180deg,
+      rgba(var(--color-peach-rgb), 1) 0%,
+      rgba(var(--color-peach-rgb), 1) 90%,
+      rgba(var(--color-peach-rgb), 0.25) 100%
+    );
+  }
+
   #header:not(.index) .header-logo .index-logo {
     display: none;
   }
@@ -97,6 +106,8 @@ const isIndexPage = Astro.url.pathname === "/";
     padding: 0 var(--spacing-container);
     padding-top: var(--spacing-xs);
     padding-bottom: var(--spacing-2sm);
+    max-width: var(--container-max-width-xl);
+    margin: 0 auto;
   }
 
   .header-logo {
