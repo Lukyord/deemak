@@ -17,6 +17,7 @@ import type {
 import "@/styles/index.css";
 import ScHomepageHero from "@/components/homepage/sc-HomepageHero.astro";
 import ScFeaturedTreatment from "@/components/homepage/sc-FeaturedTreatment.astro";
+import Media from "@/components/ui/Media.astro";
 
 const services: Service[] = await getServices();
 const categories: JournalCategory[] = await getJournalCategories();
@@ -29,6 +30,22 @@ const authors: JournalAuthor[] = await getJournalAuthors();
     <ScHomepageHero />
 
     <ScFeaturedTreatment />
+
+    <section data-section="index-banner">
+      <div class="sc-billboard">
+        <div class="cover animate matrixZoomOut">
+          <Media
+            cover={"/media/deemak-store-front.webp"}
+            coverMobile={"/media/deemak-store-front-mb.webp"}
+            coverType="object-fit"
+            alt="Deemak Thai Massage Store Front"
+            title="Deemak Thai Massage"
+          />
+        </div>
+
+        <a href="/location" class="button secondary"><span>Location</span></a>
+      </div>
+    </section>
 
     <section style="height: 100svh;"></section>
   </main>
