@@ -1,0 +1,152 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getServices, getServiceBySlug } from "@/services/service";
+import { urlFor } from "@/lib/sanity";
+import type { Service } from "~/sanity/sanity.types";
+
+export async function getStaticPaths() {
+  const services = await getServices();
+  return services.map((service) => ({
+    params: { slug: service.slug?.current },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+---
+
+<Layout title={service.title || "Service"}>
+  <main>
+    <article class="service-detail">
+      {
+        service.mainImage && service.mainImage.asset && (
+          <img
+            src={urlFor(service.mainImage.asset._ref).width(1200).url()}
+            alt={service.title}
+            class="main-image"
+          />
+        )
+      }
+
+      <div class="container">
+        <h1>{service.title}</h1>
+        <p class="short-description">{service.shortDescription}</p>
+
+        <div class="description">
+          <h2>About this treatment</h2>
+          <p>{service.description1}</p>
+          {service.description2 && <p>{service.description2}</p>}
+        </div>
+
+        <div class="highlight">
+          <h2>Highlight</h2>
+          <p>{service.highlight}</p>
+        </div>
+
+        <div class="pricing">
+          <h2>Pricing Options</h2>
+          <ul>
+            {
+              service.pricingOptions?.map((option) => (
+                <li>
+                  {option.time} {option.timeUnit} - £{option.price}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        {
+          service.expectationImage && service.expectationImage.asset && (
+            <div class="expectation">
+              <img
+                src={urlFor(service.expectationImage.asset._ref)
+                  .width(800)
+                  .url()}
+                alt={`Expectation for ${service.title}`}
+              />
+              <h2>What to Expect</h2>
+              <p>{service.expectation}</p>
+            </div>
+          )
+        }
+
+        <div class="benefits">
+          <h2>Benefits</h2>
+          <ul>
+            {service.benefits?.map((benefit) => <li>{benefit}</li>)}
+          </ul>
+        </div>
+
+        <div class="cta">
+          <a href="/contact" class="button">Book Now</a>
+        </div>
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .service-detail {
+    padding: 2rem 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .main-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .short-description {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .description,
+  .highlight,
+  .pricing,
+  .expectation,
+  .benefits {
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .pricing ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .benefits ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+  }
+
+  .cta {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+</style>
