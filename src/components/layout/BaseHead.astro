@@ -1,6 +1,13 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 
+import "@/styles/animate.min.css";
+import "@/styles/theme.css";
+import "@/styles/theme-rwd.css";
+import "@/styles/theme-default.css";
+import "@/styles/iconfont.css";
+import "@/styles/library/animate.min.css";
+
 interface Props {
   title: string;
   description?: string;
@@ -65,4 +72,4 @@ const { title, description, image = "/og.jpg" } = Astro.props;
 <script src="../../lib/util.js"></script>
 <script src="../../lib/theme.js"></script>
 
-<!-- <ViewTransitions /> -->
+<ViewTransitions />

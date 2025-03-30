@@ -36,11 +36,13 @@
     "react-dom": "^18.3.1",
     "sanity": "^3.81.0",
     "sharp": "^0.33.5",
+    "splitting": "^1.1.0",
     "styled-components": "^6.1",
-    "typescript": "^5.6.2"
+    "wow.js": "^1.2.2"
   },
   "devDependencies": {
     "prettier": "^3.3.3",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.7.2"
   }
 }

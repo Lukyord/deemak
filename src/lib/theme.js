@@ -1,5 +1,7 @@
 import { onWindowResize, detectDevices } from "./util.js";
 import { gsap } from "gsap";
+import WOW from "wow.js";
+import Splitting from "splitting";
 
 /*::* INIT THEME *::*/
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,6 +21,31 @@ document.addEventListener("DOMContentLoaded", () => {
   // Device detection
   const deviceDetector = detectDevices();
   deviceDetector.init();
+});
+
+/*::* Animation *::*/
+document.addEventListener("DOMContentLoaded", () => {
+  // WOW
+  const wow = new WOW({ boxClass: "animate" });
+  wow.init();
+
+  // Splitting
+  Splitting({
+    target: "[data-split]",
+    by: "chars",
+    key: null,
+  });
+  document
+    .querySelectorAll("*[data-split][data-split-animate] .word")
+    .forEach((word, index) => {
+      const delay = index * 0.1 + 0.6;
+      const span = document.createElement("span");
+      span.className = "word-animate animate";
+      span.innerHTML = word.innerHTML;
+      span.setAttribute("data-wow-delay", `${delay}s`);
+      word.innerHTML = "";
+      word.appendChild(span);
+    });
 });
 
 /*::* HEADER *::*/

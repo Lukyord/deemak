@@ -2293,6 +2293,39 @@ html.no-touchevents *[class*="swiper-button-"]:hover:after {
   animation-delay: 0.1s;
 }
 
+@keyframes wordReveal {
+  0% {
+    opacity: 0.5;
+    transform: translate3d(0, 1.1em, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+*[data-split-animate] .word {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  overflow: hidden;
+}
+*[data-split-animate] .word.overflow-visible {
+  overflow: visible;
+}
+
+*[data-split-animate] .word-animate {
+  display: inline-block;
+  vertical-align: top;
+  -webkit-animation-name: wordReveal;
+  animation-name: wordReveal;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+}
+*[data-split-animate] .word-animate.animated {
+  opacity: 0.5;
+  transform: translate3d(0, 1em, 0);
+}
+
 @-webkit-keyframes matrixZoomOut {
   from {
     opacity: 0;
