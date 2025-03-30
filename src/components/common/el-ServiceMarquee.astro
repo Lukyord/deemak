@@ -29,6 +29,7 @@ const services: Service[] = await getServices();
     margin-left: calc(-1 * var(--spacing-container));
     margin-right: calc(-1 * var(--spacing-container));
     --gap-y: var(--spacing-2lg);
+    user-select: none;
   }
 
   .marquee ul {
@@ -48,7 +49,7 @@ const services: Service[] = await getServices();
 
   @keyframes scroll {
     to {
-      transform: translateX(calc(-100% - var(--gap-y)));
+      transform: translateX(calc(-100%));
     }
   }
 
