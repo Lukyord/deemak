@@ -25,6 +25,20 @@ export default defineType({
       name: 'mainImage',
       title: 'Main Image',
       type: 'image',
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alternative text',
+          type: 'string',
+          validation: (Rule) => Rule.required(),
+        },
+        {
+          name: 'title',
+          title: 'Image Title',
+          type: 'string',
+          validation: (Rule) => Rule.required(),
+        },
+      ],
       options: {
         accept: 'image/*',
         hotspot: true,
@@ -110,6 +124,20 @@ export default defineType({
       name: 'expectationImage',
       title: 'Expectation Image',
       type: 'image',
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alternative text',
+          type: 'string',
+          validation: (Rule) => Rule.required(),
+        },
+        {
+          name: 'title',
+          title: 'Image Title',
+          type: 'string',
+          validation: (Rule) => Rule.required(),
+        },
+      ],
       options: {
         accept: 'image/*',
         hotspot: true,

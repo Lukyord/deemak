@@ -42,7 +42,7 @@ export default defineType({
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
           {
-            title: 'URL',
+            title: 'External Link',
             name: 'link',
             type: 'object',
             fields: [
@@ -50,6 +50,28 @@ export default defineType({
                 title: 'URL',
                 name: 'href',
                 type: 'url',
+                validation: (Rule) => Rule.required(),
+              },
+              {
+                title: 'Open in new tab',
+                name: 'blank',
+                description: 'By toggling this, the link will open in a new tab',
+                type: 'boolean',
+                initialValue: false,
+              },
+            ],
+          },
+          {
+            title: 'Internal Link',
+            name: 'internalLink',
+            type: 'object',
+            fields: [
+              {
+                title: 'Reference',
+                name: 'reference',
+                type: 'reference',
+                to: [{type: 'journal'}, {type: 'service'}],
+                validation: (Rule) => Rule.required(),
               },
             ],
           },
@@ -61,6 +83,20 @@ export default defineType({
     // as a block type.
     defineArrayMember({
       type: 'image',
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alternative text',
+          type: 'string',
+          validation: (Rule) => Rule.required(),
+        },
+        {
+          name: 'title',
+          title: 'Image Title',
+          type: 'string',
+          validation: (Rule) => Rule.required(),
+        },
+      ],
       options: {hotspot: true},
     }),
   ],
