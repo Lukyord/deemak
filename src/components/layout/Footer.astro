@@ -1,5 +1,84 @@
 ---
+import "./footer.css";
 
+import Media from "../ui/Media.astro";
 ---
 
-<footer></footer>
+<footer id="footer">
+  <div class="footer-nav bg-peach">
+    <div class="footer-header">
+      <div class="footer-logo">
+        <Media
+          cover={"/media/footer-logo.webp"}
+          alt="Deemak Logo"
+          title="Deemak Logo"
+        />
+      </div>
+
+      <div class="footer-info">
+        <address>
+          28 Upper Richmond Rd, <br />
+          East Putney,<br />
+          SW15 2RX
+        </address>
+
+        <div class="footer-contact">
+          <a href="tel:+442089443434">+44 20 8944 3434</a>
+          <a href="mailto:emailaddress@deemak.com">emailaddress@deemak.com</a>
+        </div>
+
+        <div class="social">
+          <a href="#instagram">
+            <i class="ic ic-instagram"></i>
+          </a>
+
+          <a href="#facebook">
+            <i class="ic ic-facebook"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-body">
+      <div class="ttl">
+        <h2>Don't miss a thing.</h2>
+      </div>
+
+      <form action="">
+        <div class="input">
+          <input
+            type="email"
+            name="newsletter-email"
+            id="newsletter-email"
+            autocomplete="email"
+            required
+            placeholder="Your Email Address"
+          />
+        </div>
+
+        <button class="button" type="submit">
+          <i class="ic ic-mail-send"></i>
+        </button>
+      </form>
+    </div>
+
+    <div class="footer-footer">
+      <p class="copyright">© Deemak {new Date().getFullYear()}</p>
+      <div class="marquee">
+        {
+          [...Array(2)].map((_, i) => (
+            <ul aria-hidden={i === 1}>
+              <li class="marquee-item">
+                <p>
+                  <span class="font-heading">Deemak</span>{" "}
+                  <br class="hidden-device-md" />
+                  <span class="font-body">Thai Massage</span>
+                </p>
+              </li>
+            </ul>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</footer>

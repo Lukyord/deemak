@@ -1,0 +1,56 @@
+---
+import type { Journal } from "~/sanity/sanity.types";
+import Media from "../ui/Media.astro";
+import { urlFor } from "@/lib/sanity";
+
+type Props = {
+  journal: Journal;
+};
+
+const { journal } = Astro.props as Props;
+---
+
+<div class="card" data-card="feature-journal">
+  <a href={`/journals/${journal.slug?.current}`} class="link-overlay">
+    &nbsp;
+  </a>
+
+  <div class="card-image">
+    <Media
+      cover={urlFor(journal.mainImage?.asset?._ref || "").url()}
+      alt={journal.title}
+      title={journal.title}
+      coverType="object-fit"
+    />
+  </div>
+  <div class="card-content">
+    <div class="card-header">
+      <div class="card-date">
+        <small>
+          {
+            new Date(journal.publishedAt as string).toLocaleDateString(
+              "en-GB",
+              {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
+              },
+            )
+          }
+        </small>
+      </div>
+      <div class="card-ttl">
+        <h5>{journal.title}</h5>
+      </div>
+      <div class="card-desc">
+        <p>{journal.description}</p>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <a href={`/journals/${journal.slug?.current}`} class="read-more-button">
+        <span>Read More</span>
+      </a>
+    </div>
+  </div>
+</div>

@@ -239,6 +239,8 @@ html.no-touchevents [data-card="featured-service"]:hover .cover::before {
 @media (max-width: 991px) {
   [data-section="contact-cta"] .sc-billboard {
     flex-direction: column;
+    height: auto;
+    min-height: 100svh;
   }
 
   [data-section="contact-cta"] .sc-billboard .main-image {
@@ -249,11 +251,73 @@ html.no-touchevents [data-card="featured-service"]:hover .cover::before {
   [data-section="contact-cta"] .sc-billboard .content {
     width: 100%;
     justify-content: center;
-    padding: var(--spacing-2lg) var(--spacing-container);
+    padding: var(--gap-section) var(--spacing-container);
   }
 
   [data-section="contact-cta"] .content .text-box {
     width: 100%;
     margin-left: 0;
+  }
+
+  [data-section="contact-cta"] .text-box .header {
+    margin-bottom: var(--spacing-md);
+  }
+}
+
+/* SECTION: FEATURED JOURNALS */
+[data-section="featured-journals"] .sc-header {
+  grid-gap: var(--spacing-md);
+}
+
+[data-section="featured-journals"] .sc-header:before,
+[data-section="featured-journals"] .sc-header:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.25rem;
+  background-color: var(--color-black);
+}
+
+[data-section="featured-journals"] .sc-header .sc-ttl {
+  flex-shrink: 0;
+}
+
+[data-section="featured-journals"] .card-container {
+  --column: 3;
+  --gap-y: var(--spacing-md);
+  --gap-x: var(--spacing-md);
+}
+
+[data-card="feature-journal"] .card-image {
+  aspect-ratio: 1.5;
+}
+
+[data-card="feature-journal"] .card-content {
+  grid-gap: var(--spacing-2sm);
+  margin-top: var(--spacing-3xs);
+}
+
+[data-card="feature-journal"] .card-header {
+  display: flex;
+  flex-direction: column;
+  grid-gap: var(--spacing-3xs);
+}
+
+[data-card="feature-journal"] .card-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 991px) {
+  [data-section="featured-journals"] .sc-header {
+    flex-direction: row;
+    align-items: center;
+    grid-gap: var(--spacing-3xs);
+  }
+
+  [data-section="featured-journals"] .card-container {
+    --column: 1;
   }
 }

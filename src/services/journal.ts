@@ -29,6 +29,7 @@ export async function getJournals(): Promise<Journal[]> {
       _updatedAt,
       _rev,
       title,
+      description,
       slug,
       author,
       mainImage,

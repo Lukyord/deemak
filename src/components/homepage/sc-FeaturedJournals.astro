@@ -1,0 +1,27 @@
+---
+import { getJournals } from "@/services/journal";
+import type { Journal } from "~/sanity/sanity.types";
+import ElFeaturedJournalCard from "./el-FeaturedJournalCard.astro";
+
+const journals: Journal[] = await getJournals();
+---
+
+<section data-section="featured-journals">
+  <div class="sc-inner">
+    <div class="container xl">
+      <div class="sc-header justify-between">
+        <div class="sc-ttl">
+          <h2>The Journal</h2>
+        </div>
+      </div>
+
+      <div class="card-container" data-card-layout="grid">
+        {
+          journals
+            .slice(0, 3)
+            .map((journal) => <ElFeaturedJournalCard journal={journal} />)
+        }
+      </div>
+    </div>
+  </div>
+</section>

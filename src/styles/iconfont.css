@@ -26,6 +26,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.ic-mail-send:before {
+  content: "\e963";
+}
 .ic-book:before {
   content: "\e962";
 }

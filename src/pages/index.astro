@@ -15,11 +15,13 @@ import type {
 } from "~/sanity/sanity.types";
 
 import "@/styles/index.css";
+import Media from "@/components/ui/Media.astro";
 import ScHomepageHero from "@/components/homepage/sc-HomepageHero.astro";
 import ScFeaturedTreatment from "@/components/homepage/sc-FeaturedTreatment.astro";
-import Media from "@/components/ui/Media.astro";
 import ScHomepageInfo from "@/components/homepage/sc-HomepageInfo.astro";
 import ScContactCta from "@/components/homepage/sc-ContactCta.astro";
+import ScFeaturedJournals from "@/components/homepage/sc-FeaturedJournals.astro";
+
 const services: Service[] = await getServices();
 const categories: JournalCategory[] = await getJournalCategories();
 const journals: Journal[] = await getJournals();
@@ -44,7 +46,9 @@ const authors: JournalAuthor[] = await getJournalAuthors();
           />
         </div>
 
-        <a href="/location" class="button secondary"><span>Location</span></a>
+        <div class="cta animate fadeIn">
+          <a href="/location" class="button secondary"><span>Location</span></a>
+        </div>
       </div>
     </section>
 
@@ -52,7 +56,7 @@ const authors: JournalAuthor[] = await getJournalAuthors();
 
     <ScContactCta />
 
-    <section style="height: 100svh;"></section>
+    <ScFeaturedJournals />
   </main>
 </Layout>
 

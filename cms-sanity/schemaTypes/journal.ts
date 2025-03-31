@@ -12,6 +12,13 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      description: 'A short description or summary of the journal article',
+      validation: (rule) => rule.required().max(300),
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
