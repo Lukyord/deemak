@@ -68,6 +68,8 @@
 
   :root {
     --header-height: min(7.6388888889vw, 11rem);
+
+    --spacing-container: var(--spacing-sm);
   }
 
   .sc-header {

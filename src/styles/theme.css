@@ -2568,7 +2568,7 @@ section {
 }
 
 .sc-billboard.full-screen {
-  height: 100svh;
+  min-height: 100svh;
 }
 
 [class*="gradient-overlay-"]::before {
@@ -2693,6 +2693,8 @@ section {
 }
 .sc-header.vertical {
   flex-direction: column;
+  align-items: flex-start;
+  grid-gap: var(--spacing-md);
 }
 .sc-header.justify-center {
   justify-content: center;

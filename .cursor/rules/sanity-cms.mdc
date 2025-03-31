@@ -1,0 +1,26 @@
+---
+description: For connecting to Sanity CMS and any related data fetching via groq
+globs: sanity.config.ts, sanity/**/*.ts, src/services/*.ts
+alwaysApply: false
+---
+- This project uses Sanity for CMS and query using groq, which is a special query language by sanity team.
+- There are several components you'll need to know:
+
+## cms-sanity/schema-types/
+
+Is a directory which contains all related schema related to this project's CMS
+
+## src/services/
+
+Is the actual data fetching part, GROQ query is directly in the parameters of the fetching function in this file.
+
+## src/types/
+
+Is the type declaration file, try to use `Type` instead of `Interface`
+
+When creating a new schema, be sure to include in index.ts of schema-type and also add in the list items of sanity in `sanity.config.ts` since we'll need to manually pick which is displayed in the sanity CMS UI.
+
+Note: `cms-sanity/sanity-typegen.ts` is auto generated, NO NEED to make change on that file.
+
+
+
