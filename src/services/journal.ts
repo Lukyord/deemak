@@ -35,7 +35,13 @@ export async function getJournals(): Promise<Journal[]> {
       mainImage,
       categories,
       publishedAt,
-      body
+      body,
+      seo {
+        metaTitle,
+        metaDescription,
+        canonicalUrl,
+        schemaMarkup
+      }
     }`;
 
   const journals: Journal[] = await sanityClient.fetch(query);
@@ -57,4 +63,41 @@ export async function getJournalAuthors(): Promise<JournalAuthor[]> {
 
   const authors: JournalAuthor[] = await sanityClient.fetch(query);
   return authors;
+}
+
+export async function getJournalBySlug(slug: string): Promise<Journal | null> {
+  const query = `*[_type == "journal" && slug.current == $slug][0]{
+    _id,
+    _type,
+    _createdAt,
+    _updatedAt,
+    _rev,
+    title,
+    description,
+    slug,
+    author->{
+      _id,
+      name,
+      slug,
+      image,
+      bio
+    },
+    mainImage,
+    categories[]->{
+      _id,
+      title,
+      description
+    },
+    publishedAt,
+    body,
+    seo {
+      metaTitle,
+      metaDescription,
+      canonicalUrl,
+      schemaMarkup
+    }
+  }`;
+
+  const journal = await sanityClient.fetch(query, { slug });
+  return journal;
 }

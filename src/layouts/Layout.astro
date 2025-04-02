@@ -7,17 +7,65 @@ type Props = {
   description?: string;
   bodyClass?: string;
   image?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  canonicalUrl?: string;
+  schemaMarkup?: Record<string, unknown>;
 };
 
-const { title, description, bodyClass, image } = Astro.props;
+const {
+  title = "Deemak Thai Massage",
+  description,
+  bodyClass,
+  image,
+  metaTitle = title,
+  metaDescription = description,
+  canonicalUrl = Astro.url.href,
+  schemaMarkup = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    description: description,
+    publisher: {
+      "@type": "Organization",
+      name: "Deemak Thai Massage",
+      logo: {
+        "@type": "ImageObject",
+        url: "",
+      },
+    },
+    url: canonicalUrl,
+    datePublished: new Date().toISOString(),
+    dateModified: new Date().toISOString(),
+  },
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} image={image} />
-    <meta name="msapplication-TileColor" content="#F9EBEF" />
-    <meta name="theme-color" content="#F9EBEF" />
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      metaTitle={metaTitle}
+      metaDescription={metaDescription}
+    />
+    <meta name="msapplication-TileColor" content="#581b2a" />
+    <meta name="theme-color" content="#581b2a" />
+
+    <!-- Canonical URL -->
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+
+    <!-- Schema Markup -->
+    {
+      schemaMarkup && (
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify(schemaMarkup)}
+        />
+      )
+    }
   </head>
   <body class={bodyClass}>
     <BaseBodyWrapper>

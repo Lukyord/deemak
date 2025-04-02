@@ -19,6 +19,40 @@ export default defineType({
       validation: (rule) => rule.required().max(300),
     }),
     defineField({
+      name: 'seo',
+      title: 'SEO Settings',
+      type: 'object',
+      description: 'Optional SEO settings for this journal article',
+      fields: [
+        {
+          name: 'metaTitle',
+          title: 'Meta Title',
+          type: 'string',
+          description:
+            'Override the default meta title (if left empty, will use the article title)',
+        },
+        {
+          name: 'metaDescription',
+          title: 'Meta Description',
+          type: 'text',
+          description:
+            'Override the default meta description (if left empty, will use the article description)',
+        },
+        {
+          name: 'canonicalUrl',
+          title: 'Canonical URL',
+          type: 'url',
+          description: 'Optional canonical URL if this content exists elsewhere',
+        },
+        {
+          name: 'schemaMarkup',
+          title: 'Schema Markup',
+          type: 'text',
+          description: 'Optional custom schema.org JSON-LD markup (must be valid JSON)',
+        },
+      ],
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',

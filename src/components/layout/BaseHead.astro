@@ -13,30 +13,33 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  metaTitle?: string;
+  metaDescription?: string;
 }
 
-// const canonicalURL = new URL(Astro.url.pathname, Astro.site); ***
-
-const { title, description, image = "/og.jpg" } = Astro.props;
+const {
+  title,
+  description,
+  image = "/og.jpg",
+  metaTitle = title,
+  metaDescription = description,
+} = Astro.props;
 ---
 
 <!-- Global Metadata -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<!-- Canonical URL *** -->
-<!-- <link rel="canonical" href={canonicalURL} /> -->
-
 <!-- Sitemap *** -->
 <!-- <link rel="sitemap" href="/sitemap-index.xml" /> -->
 
 <!-- Primary Meta Tags -->
-<title>{title ? `${title}` : "Deemak Thai Massage"}</title>
+<title>{title}</title>
 <meta
   name="title"
-  content={title ? `${title} | Alvis Design` : "Alvis Design"}
+  content={metaTitle ? `${metaTitle}` : "Deemak Thai Massage"}
 />
-<meta name="description" content={description} />
+<meta name="description" content={metaDescription} />
 
 <!-- Favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="/favicon/favicon.ico" />
@@ -58,15 +61,15 @@ const { title, description, image = "/og.jpg" } = Astro.props;
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
+<meta property="og:title" content={metaTitle} />
+<meta property="og:description" content={metaDescription} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
+<meta property="twitter:title" content={metaTitle} />
+<meta property="twitter:description" content={metaDescription} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
 <!-- SCRIPTS -->
