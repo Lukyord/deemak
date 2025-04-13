@@ -1,19 +1,30 @@
 ---
-import { useState, useEffect } from "react";
-
-import type { Service } from "~/sanity/sanity.types";
+import type { Service, SiteSettings } from "~/sanity/sanity.types";
 import { getServices } from "@/services/service";
+import { getSiteSettings } from "@/services/siteSettings";
 
 import ElServiceCard from "@/components/services/el-ServiceCard.astro";
 
 const services: Service[] = await getServices();
+const siteSettings: SiteSettings = await getSiteSettings();
+
+const highlightedServiceIndex = services.findIndex(
+  (service) => service._id === siteSettings?.highlightedService?._ref,
+);
+
+// move highlighted service to the 5th position
+if (highlightedServiceIndex !== -1) {
+  const [highlightedService] = services.splice(highlightedServiceIndex, 1);
+  services.splice(4, 0, highlightedService); // Insert at index 4 (5th position)
+}
 ---
 
 <section data-section="services-list">
-  <div class="sc-inner">
+  <div class="sc-inner sc-inner--bottom-extra">
     <div class="container xl">
       <div class="card-container" data-card-layout="grid">
         {services.map((service) => <ElServiceCard service={service} />)}
+        <a href="#outer" class="service-cta"> <h2>Book<br />Now</h2></a>
       </div>
     </div>
   </div>

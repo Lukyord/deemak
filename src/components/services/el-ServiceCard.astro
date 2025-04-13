@@ -11,6 +11,8 @@ const { service }: Props = Astro.props;
 ---
 
 <div class="card" data-card="service">
+  <a href={`/services/${service.slug?.current}`} class="link-overlay"></a>
+
   <div class="card-image">
     <Media
       cover={urlFor(service.mainImage?.asset?._ref || "").url()}
