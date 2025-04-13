@@ -15,12 +15,13 @@
   .hidden-device-sm {
     display: none !important;
   }
-
-  :root {
-  }
 }
 
 @media (min-width: 992px) {
+  :root {
+    --header-height: min(7.6388888889vw, 11rem);
+  }
+
   .hidden-device-md {
     display: none !important;
   }
@@ -67,8 +68,6 @@
   }
 
   :root {
-    --header-height: min(7.6388888889vw, 11rem);
-
     --spacing-container: var(--spacing-sm);
   }
 

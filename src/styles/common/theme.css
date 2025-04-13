@@ -2514,6 +2514,10 @@ section {
   padding-top: var(--gap-section);
   padding-bottom: var(--gap-section);
 }
+
+.sc-hero .sc-inner {
+  padding-top: calc(var(--gap-section) + var(--header-height));
+}
 .sc-inner--follows {
   padding-top: calc(var(--gap-section) / 2);
 }

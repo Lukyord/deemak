@@ -1,0 +1,28 @@
+---
+import type { Service } from "~/sanity/sanity.types";
+import Media from "../ui/Media.astro";
+import { urlFor } from "@/lib/sanity";
+
+type Props = {
+  service: Service;
+};
+
+const { service }: Props = Astro.props;
+---
+
+<div class="card" data-card="service">
+  <div class="card-image">
+    <Media
+      cover={urlFor(service.mainImage?.asset?._ref || "").url()}
+      coverType="object-fit"
+      alt={service.mainImage?.alt}
+      title={service.mainImage?.title}
+    />
+  </div>
+
+  <div class="card-content">
+    <div class="card-ttl">
+      <h5>{service.title}</h5>
+    </div>
+  </div>
+</div>

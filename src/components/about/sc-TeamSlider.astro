@@ -1,0 +1,83 @@
+---
+import { urlFor } from "@/lib/sanity";
+import { getTeamMembers } from "@/services/team";
+import Media from "../ui/Media.astro";
+
+const teamMembers = await getTeamMembers();
+---
+
+<section data-section="team-slider">
+  <div class="sc-inner">
+    <div class="container xl">
+      <div class="card-container" data-card-layout="slider">
+        <div class="swiper auto">
+          <div class="swiper-wrapper">
+            <!-- PREVIEW CARD -->
+            <div class="swiper-slide">
+              <div class="card" data-card="team-info">
+                <div class="card-content">
+                  <div class="card-ttl">
+                    <h4>Our Team</h4>
+                  </div>
+
+                  <div class="card-desc">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur lartansu
+                      adipiscing elit, sed do eiusmod tempor
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TEAM MEMBERS -->
+            {
+              teamMembers.map((member) => (
+                <div class="swiper-slide">
+                  <div class="card" data-card="team">
+                    <div class="cover">
+                      <Media
+                        cover={urlFor(member.image?.asset?._ref || "").url()}
+                        coverType="object-fit"
+                        alt={member.fristName + " " + member.lastName}
+                        title={member.fristName + " " + member.lastName}
+                      />
+                    </div>
+
+                    <div class="card-content">
+                      <div class="card-ttl">
+                        <p>
+                          {member.fristName} {member.lastName}
+                        </p>
+                      </div>
+                      <div class="card-subttl">
+                        <small>
+                          {member.role?.map((role) => role?.title).join(", ")}
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            }
+
+            <!-- SERVICES CARD -->
+            <div class="swiper-slide">
+              <div class="card" data-card="team-info">
+                <div class="card-content">
+                  <div class="card-ttl">
+                    <h4>See our Services</h4>
+                  </div>
+
+                  <a href="/services" class="button">
+                    <span>Find Out More</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

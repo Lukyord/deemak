@@ -1,0 +1,20 @@
+---
+import { useState, useEffect } from "react";
+
+import type { Service } from "~/sanity/sanity.types";
+import { getServices } from "@/services/service";
+
+import ElServiceCard from "@/components/services/el-ServiceCard.astro";
+
+const services: Service[] = await getServices();
+---
+
+<section data-section="services-list">
+  <div class="sc-inner">
+    <div class="container xl">
+      <div class="card-container" data-card-layout="grid">
+        {services.map((service) => <ElServiceCard service={service} />)}
+      </div>
+    </div>
+  </div>
+</section>

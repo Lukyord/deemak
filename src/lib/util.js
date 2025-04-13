@@ -36,6 +36,7 @@ export function onWindowResize(
   });
 }
 
+// DETECT DEVICES =============================
 export function detectDevices() {
   const html = document.documentElement;
 
@@ -62,4 +63,31 @@ export function detectDevices() {
       detectMobileDevices();
     },
   };
+}
+
+// CHECK IF IN VIEW =============================
+export function checkIfInView(
+  inViewRatio,
+  content,
+  inViewCallback,
+  outOfViewCallback,
+) {
+  if (!content) {
+    console.log("Content not found");
+    return;
+  }
+
+  var rect = content.getBoundingClientRect();
+  var windowHeight = window.innerHeight;
+  var sectionHeight = rect.height;
+  var inViewSectionHeight = sectionHeight * inViewRatio;
+
+  if (
+    rect.top + inViewSectionHeight <= windowHeight &&
+    rect.top + sectionHeight > 0
+  ) {
+    inViewCallback();
+  } else {
+    outOfViewCallback();
+  }
 }

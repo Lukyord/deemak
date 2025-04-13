@@ -68,6 +68,20 @@ export type Geopoint = {
   alt?: number
 }
 
+export type SiteSettings = {
+  _id: string
+  _type: 'siteSettings'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  highlightedService?: {
+    _ref: string
+    _type: 'reference'
+    _weak?: boolean
+    [internalGroqTypeReferenceTo]?: 'service'
+  }
+}
+
 export type IndexAnnouncement = {
   _id: string
   _type: 'indexAnnouncement'
@@ -193,6 +207,12 @@ export type Journal = {
   _rev: string
   title?: string
   description?: string
+  seo?: {
+    metaTitle?: string
+    metaDescription?: string
+    canonicalUrl?: string
+    schemaMarkup?: string
+  }
   slug?: Slug
   author?: {
     _ref: string
@@ -231,6 +251,12 @@ export type Service = {
   _updatedAt: string
   _rev: string
   title?: string
+  seo?: {
+    metaTitle?: string
+    metaDescription?: string
+    canonicalUrl?: string
+    schemaMarkup?: string
+  }
   slug?: Slug
   mainImage?: {
     asset?: {
@@ -382,6 +408,7 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
+  | SiteSettings
   | IndexAnnouncement
   | Team
   | TeamRole

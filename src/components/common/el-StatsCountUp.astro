@@ -1,0 +1,32 @@
+---
+type Props = {
+  start: number;
+  end: number;
+  duration: number;
+  suffix: string;
+  prefix: string;
+  unit: string;
+};
+
+const { start, end, duration, suffix, prefix, unit }: Props = Astro.props;
+---
+
+<div class="stats-item">
+  <div
+    class="item-number"
+    data-number-placeholder={`${prefix}${end}${suffix},&`}
+  >
+    <span class="prefix">{prefix}</span><span
+      class="countup"
+      data-start={start}
+      data-stop={end}
+      data-duration={duration * 1000}
+    >
+      {start}
+    </span><span class="suffix">{suffix}</span>
+  </div>
+
+  <div class="unit">
+    <span class="unit-label">{unit}</span>
+  </div>
+</div>

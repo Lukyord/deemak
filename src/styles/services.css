@@ -1,0 +1,18 @@
+/* PAGE */
+/* PAGE: SERVICES */
+
+/* SECTION */
+/* SECTION: SERVICES LIST */
+[data-section="services-list"] .card-container {
+  --column: 3;
+  --gap-y: var(--spacing-sm);
+  --gap-x: var(--spacing-sm);
+}
+
+.card[data-card="service"] .card-image {
+  aspect-ratio: 1;
+}
+
+.card[data-card="service"] .card-content {
+  margin-top: var(--spacing-sm);
+}

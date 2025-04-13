@@ -6,6 +6,7 @@ import teamRole from './teamRole'
 import team from './team'
 import service from './service'
 import indexAnnouncement from './indexAnnouncement'
+import siteSettings from './siteSetting'
 
 export const schemaTypes = [
   journal,
@@ -16,4 +17,5 @@ export const schemaTypes = [
   team,
   service,
   indexAnnouncement,
+  siteSettings,
 ]

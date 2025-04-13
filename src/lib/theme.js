@@ -1,4 +1,4 @@
-import { onWindowResize, detectDevices } from "./util.js";
+import { onWindowResize, detectDevices, checkIfInView } from "./util.js";
 import { gsap } from "gsap";
 import WOW from "wow.js";
 import Splitting from "splitting";
@@ -230,4 +230,67 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initMenuToggle();
   initHeaderAnimation();
+});
+
+/*::* COUNTUP *::*/
+document.addEventListener("DOMContentLoaded", function () {
+  function easeOutCubicCustom(x) {
+    return 1 - Math.pow(1 - x, 3);
+  }
+
+  function startCountAnimation(element) {
+    const countTo = Number(element.getAttribute("data-stop").replace(/,/g, ""));
+    const duration = Number(element.getAttribute("data-duration")) || 2000;
+    const startValue = Number(element.textContent.replace(/,/g, "")) || 0;
+    const startTime = performance.now();
+
+    function addSeparator(num) {
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function updateCount(timestamp) {
+      const elapsedTime = timestamp - startTime;
+      const progress = Math.min(elapsedTime / duration, 1);
+      const easedProgress = easeOutCubicCustom(progress);
+      const currentValue = Math.floor(
+        startValue + (countTo - startValue) * easedProgress,
+      );
+      element.textContent = addSeparator(currentValue);
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCount);
+      } else {
+        element.textContent = addSeparator(countTo);
+      }
+    }
+
+    requestAnimationFrame(updateCount);
+  }
+
+  const countupElements = document.querySelectorAll(".countup");
+
+  if (countupElements.length) {
+    countupElements.forEach((element) => {
+      const ratioInView = 1 / 100;
+
+      function inViewCallback() {
+        if (
+          !document.documentElement.classList.contains("overflow-hidden") &&
+          !element.classList.contains("animated")
+        ) {
+          element.classList.add("in-view", "animated");
+          startCountAnimation(element);
+        }
+      }
+
+      window.addEventListener("scroll", () =>
+        checkIfInView(ratioInView, element, inViewCallback, () => {}),
+      );
+      window.addEventListener("resize", () =>
+        checkIfInView(ratioInView, element, inViewCallback, () => {}),
+      );
+
+      checkIfInView(ratioInView, element, inViewCallback, () => {});
+    });
+  }
 });

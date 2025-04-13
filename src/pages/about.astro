@@ -1,11 +1,74 @@
 ---
+import "@/styles/about.css";
+
 import Layout from "@/layouts/Layout.astro";
+import ScHeroColumnText from "@/components/common/sc-HeroColumnText.astro";
+import Media from "@/components/ui/Media.astro";
+import ElStatsCountUp from "@/components/common/el-StatsCountUp.astro";
+import ScOwner from "@/components/about/sc-Owner.astro";
+import ScTeamSlider from "@/components/about/sc-TeamSlider.astro";
 ---
 
 <Layout title="Deemak Thai Massage">
   <main>
-    <section style="height: 200vh;">About</section>
+    <ScHeroColumnText
+      title="About Us"
+      subTitle="<p>About Dee Mak <br /> Our aims</p>"
+      description="<p>Welcome to Dee Mak Thai Therapy, where the rich traditions of Thai massage meet modern relaxation. Located in Southwest London, our skilled therapists offer a soothing experience that transports you to the serenity of Thailand. Through a blend of ancient techniques and contemporary comfort, we ensure you leave feeling refreshed and revitalized.<br /><br />At Dee Mak, <strong>your well-being is our priority</strong>. Our Thai therapies provide relief from stress and pain, guiding you to a state of deep relaxation. Embrace the tranquility of Thailand and discover true rejuvenation with us.</p>"
+      extraClass="sc-hero"
+    />
+
+    <section data-section="banner-image">
+      <div class="cover animate matrixZoomOut">
+        <Media
+          cover="/media/about-banner-image.webp"
+          coverMobile="/media/about-banner-image-mb.webp"
+          coverType="object-fit"
+          alt="Dee Mak Thai Massage"
+          title="Dee Mak Thai Massage"
+        />
+      </div>
+    </section>
+
+    <ScOwner />
+
+    <ScHeroColumnText
+      title="The Team"
+      subTitle="<p>About Dee Mak <br /> Our Team</p>"
+      description="<p>Our skilled practitioners bring years of experience in traditional Thai massage, offering personalized sessions to help you relax and rejuvenate.<br><br>We see massage as a path to balance. Combining ancient techniques with modern comfort, our team creates a calming experience tailored to your needs, whether for stress relief or pure relaxation.</p>"
+    >
+      <div class="team-stats">
+        {
+          [
+            {
+              start: 0,
+              end: 5000,
+              duration: 3,
+              suffix: "+",
+              prefix: "",
+              unit: "Clients served",
+            },
+            {
+              start: 0,
+              end: 8,
+              duration: 2,
+              suffix: "",
+              prefix: "",
+              unit: "Therapists in operation",
+            },
+            {
+              start: 0,
+              end: 10,
+              duration: 2,
+              suffix: "",
+              prefix: "",
+              unit: "Years of experience",
+            },
+          ].map((item) => <ElStatsCountUp {...item} />)
+        }
+      </div>
+    </ScHeroColumnText>
+
+    <ScTeamSlider />
   </main>
 </Layout>
-
-<style></style>

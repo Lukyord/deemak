@@ -1,0 +1,33 @@
+---
+type Props = {
+  title: string;
+  subTitle: string;
+  description: string;
+  extraClass?: string;
+};
+
+const { title, subTitle, description, extraClass }: Props = Astro.props;
+---
+
+<section data-section="hero-column-text" class={`${extraClass ?? ""}`}>
+  <div class="sc-inner">
+    <div class="container xl">
+      <div class="hero-column-text">
+        <div class="hero-ttl animate fadeIn">
+          <h1>{title}</h1>
+        </div>
+
+        <div class="hero-text">
+          <div class="hero-subttl animate fadeIn">
+            <Fragment set:html={subTitle} />
+          </div>
+          <div class="hero-desc animate fadeIn">
+            <Fragment set:html={description} />
+
+            <slot />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,11 +1,20 @@
 ---
+import "@/styles/services.css";
+
 import Layout from "@/layouts/Layout.astro";
+import ScHeroColumnText from "@/components/common/sc-HeroColumnText.astro";
+import ScServicesList from "@/components/services/sc-ServicesList.astro";
 ---
 
 <Layout title="Deemak Thai Massage">
   <main>
-    <section style="height: 200vh;">Service</section>
+    <ScHeroColumnText
+      title="Services"
+      subTitle="<p>About Dee Mak <br /> Our treatments</p>"
+      description="<p>At Dee Mak Thai Therapy, we offer a variety of treatments focused on relaxation and well-being. If you have a specific treatment in mind, feel free to reach out—we're here to accommodate your needs.<br><br>We also introduce special offers and seasonal treatments regularly. Contact us to learn about any current promotions. Let us help you discover the perfect therapy to unwind and recharge.</p>"
+      extraClass="sc-hero"
+    />
+
+    <ScServicesList />
   </main>
 </Layout>
-
-<style></style>
