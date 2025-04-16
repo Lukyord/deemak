@@ -722,13 +722,13 @@ strong {
 }
 
 h1 {
-  font-size: var(--font-size-h1);
+  font-size: var(--font-size-h1) !important;
   line-height: var(--line-height-h1);
   font-family: var(--font-heading);
 }
 
 h2 {
-  font-size: var(--font-size-h2);
+  font-size: var(--font-size-h2) !important;
   line-height: var(--line-height-h2);
   font-family: var(--font-heading);
 }

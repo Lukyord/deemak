@@ -126,6 +126,11 @@ const isIndexPage = Astro.url.pathname === "/";
     align-items: center;
   }
 
+  html.no-touchevents .header-menu .menu a:hover {
+    color: var(--color-theme);
+    opacity: 0.5;
+  }
+
   .header-nav {
     background: linear-gradient(
       180deg,

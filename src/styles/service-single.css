@@ -1,0 +1,258 @@
+/* PAGE */
+/* PAGE: SERVICE SINGLE */
+
+/* SECTION */
+/* SECTION: BANNER-TTL */
+[data-section="banner-ttl"]:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(var(--color-black-rgb), 0.8) 0%,
+    transparent 80%
+  );
+  z-index: 1;
+}
+
+[data-section="banner-ttl"] .content {
+  position: absolute;
+  max-width: 70%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  z-index: 2;
+}
+
+@media (max-width: 991px) {
+  [data-section="banner-ttl"]:before {
+    background: linear-gradient(
+      0deg,
+      rgba(var(--color-black-rgb), 1) 0%,
+      transparent 65%
+    );
+  }
+
+  [data-section="banner-ttl"] .sc-billboard.full-screen {
+    height: 150vw;
+  }
+}
+
+/* SECTION: SERVICE INFO */
+[data-section="service-info"] .content {
+  display: flex;
+}
+
+[data-section="service-info"] .highlight {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2lg);
+  text-align: center;
+}
+
+[data-section="service-info"] .highlight > p {
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-family: var(--font-heading);
+}
+
+[data-section="service-info"] .highlight .pricing {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4xs);
+}
+
+[data-section="service-info"] .description {
+  width: 55%;
+}
+
+[data-section="service-info"] .description .description-2 {
+  max-height: 0;
+  overflow: hidden;
+  transition: var(--duration-x2) linear;
+  margin-top: var(--spacing-xs);
+  margin-bottom: var(--spacing-xs);
+}
+
+[data-section="service-info"]
+  .description
+  .description-2[data-expanded="true"] {
+  max-height: 100rem;
+}
+
+[data-section="service-info"] .description .read-more-btn {
+  text-decoration: underline;
+  margin-bottom: var(--spacing-lg);
+}
+
+html.no-touchevents [data-section="service-info"] .read-more-btn:hover {
+  color: var(--color-peach);
+}
+
+@media (max-width: 991px) {
+  [data-section="service-info"] .content {
+    flex-direction: column;
+  }
+
+  [data-section="service-info"] .highlight,
+  [data-section="service-info"] .description {
+    width: 100%;
+  }
+}
+
+/* SECTION: SERVICE EXPECTATION */
+[data-section="service-expectation"] .content {
+  display: flex;
+  background-color: var(--color-peach);
+}
+
+[data-section="service-expectation"] .expectation-image {
+  width: 50%;
+  min-height: 50vw;
+  flex-shrink: 0;
+}
+
+[data-section="service-expectation"] .expectation-text {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-3xl);
+}
+
+[data-section="service-expectation"] .expectation-text > h2 {
+  margin-bottom: 0;
+}
+
+[data-section="service-expectation"] .expectation-text > p {
+  white-space: pre-line;
+}
+
+@media (max-width: 991px) {
+  [data-section="service-expectation"] .content {
+    flex-direction: column;
+  }
+
+  [data-section="service-expectation"] .expectation-image {
+    width: 100%;
+    aspect-ratio: 1;
+  }
+
+  [data-section="service-expectation"] .expectation-text {
+    width: 100%;
+    padding-left: var(--spacing-container);
+    padding-right: var(--spacing-container);
+    grid-gap: var(--spacing-md);
+  }
+}
+
+/* SECTION: SERVICE BENEFITS */
+.sc-header.line-border {
+  display: flex;
+  align-items: center;
+  grid-gap: var(--spacing-lg);
+}
+
+.sc-header.line-border:before,
+.sc-header.line-border:after {
+  content: "";
+  display: block;
+  width: 11vw;
+  height: 0;
+  border-top: var(--border-black);
+  flex-shrink: 0;
+}
+
+.sc-header.line-border:after {
+  flex-grow: 1;
+}
+
+[data-section="service-benefits"] .benefits {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+  font-family: var(--font-heading);
+}
+
+[data-section="service-benefits"] .benefits li {
+  display: flex;
+}
+
+[data-section="service-benefits"] .benefits li .number {
+  width: 20rem;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+@media (max-width: 991px) {
+  .sc-header.line-border::before {
+    content: unset;
+  }
+
+  .sc-header.line-border {
+    flex-direction: row;
+    grid-gap: var(--spacing-3xs);
+  }
+
+  [data-section="service-benefits"] .benefits {
+    gap: var(--spacing-md);
+    font-size: var(--font-size-h3);
+    line-height: var(--line-height-h3);
+  }
+
+  [data-section="service-benefits"] .benefits li .number {
+    width: 6rem;
+  }
+}
+
+/* SECTION: SERVICE OTHERS */
+[data-section="service-other"] .card-container {
+  --column: 3.5;
+  --gap-y: var(--spacing-md);
+}
+
+[data-section="service-other"] .swiper {
+  overflow: visible;
+}
+
+[data-section="service-other"] .card[data-card="service"] .card-image {
+  aspect-ratio: 1;
+}
+
+.card[data-card="service"]:is(:nth-child(1)) .card-content {
+  position: static;
+  padding: 0;
+  background-color: unset;
+  backdrop-filter: unset;
+  width: 100%;
+}
+
+.card-container[data-card-layout="slider"] .swiper-nav .swiper-button-next {
+  transform: unset;
+}
+
+@media (max-width: 991px) {
+  [data-section="service-other"] .card-container {
+    --column: 1.2;
+  }
+
+  [data-section="service-other"]
+    .card[data-card="service"]
+    .card-content
+    .card-ttl
+    > * {
+    font-size: var(--font-size-h5);
+    line-height: var(--line-height-h5);
+  }
+}
