@@ -1,0 +1,197 @@
+/* PAGE */
+/* PAGE: JOURNALS */
+
+/* SECTION */
+/* SECTION: JOURNALS LIST */
+[data-section="journal-list"] .sc-header {
+  margin-bottom: var(--gap-section);
+}
+
+[data-section="journal-list"] .card-container {
+  --column: 6;
+  --gap-y: var(--spacing-md);
+  --gap-x: var(--spacing-md);
+}
+
+.first-page .card[data-card="journal"]:nth-child(1) {
+  grid-column: span 6;
+}
+
+.first-page .card[data-card="journal"]:is(:nth-child(2), :nth-child(3)) {
+  grid-column: span 3;
+}
+
+.first-page .card[data-card="journal"]:nth-child(1) {
+  display: flex;
+  background-color: var(--color-peach);
+}
+
+.first-page .card[data-card="journal"]:nth-child(1) .card-image {
+  width: 56%;
+  aspect-ratio: 1.4209558824;
+  flex-shrink: 0;
+}
+
+.first-page .card[data-card="journal"]:nth-child(1) .card-content {
+  padding: var(--spacing-lg) var(--spacing-2lg);
+  justify-content: center;
+}
+
+.first-page .card[data-card="journal"]:nth-child(1) .card-ttl > * {
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-family: var(--font-heading);
+}
+
+.first-page .card[data-card="journal"]:nth-child(1) .card-footer .button {
+  background: var(--button-bg) !important;
+  border: var(--button-border) !important;
+  padding: var(--button-spacing-y) var(--button-spacing-x) !important;
+  grid-gap: var(--button-gap-y) var(--button-gap-x);
+  color: var(--button-color) !important;
+  overflow: hidden;
+}
+
+.first-page .card[data-card="journal"]:nth-child(1) .card-footer .button:after {
+  content: unset;
+}
+
+.first-page
+  .card[data-card="journal"]
+  .card-body
+  *:is(.card-excerpt, .card-date)
+  > p {
+  display: inline;
+}
+
+.card[data-card="journal"] {
+  grid-column: span 2;
+}
+
+.card[data-card="journal"] .card-image {
+  aspect-ratio: 1.5854545455;
+}
+
+.card[data-card="journal"] .card-body {
+  margin-top: var(--spacing-xs);
+  display: flex;
+  flex-direction: column;
+  grid-gap: var(--spacing-5xs);
+}
+
+.card[data-card="journal"] .card-body *:is(.card-excerpt, .card-date) > p {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  line-clamp: 3;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card[data-card="journal"] .card-footer .button {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  grid-gap: var(--spacing-4xs) !important;
+  align-items: center !important;
+  color: var(--color-black) !important;
+  overflow: visible;
+}
+
+.card[data-card="journal"] .card-footer .button:after {
+  content: "\e90e";
+  font-family: "iconfont";
+  font-size: var(--icon-size-2xs);
+  transition: var(--duration) var(--timing-function);
+}
+
+html.no-touchevents
+  .card[data-card="journal"]:hover
+  .card-footer
+  .button:after {
+  transform: translateX(0.2rem);
+}
+
+html.no-touchevents .card[data-card="journal"]:hover .object-fit > img {
+  transform: scale(1.05);
+}
+
+.pagination {
+  margin-top: var(--spacing-md);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-xl);
+}
+
+.pagination-numbers {
+  display: flex;
+  gap: var(--spacing-4xs);
+  margin: 0 var(--spacing-3xl);
+}
+
+.pagination-link {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  transition: var(--duration) var(--timing-function);
+}
+
+.pagination-link.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+html.no-touchevents .pagination-link:hover {
+  color: var(--color-theme);
+}
+
+.pagination-link.active {
+  font-size: var(--font-size-body);
+}
+
+.pagination-link.prev,
+.pagination-link.next {
+  text-decoration: underline;
+  width: auto;
+}
+
+.pagination-link.dots {
+  pointer-events: none;
+}
+
+@media (max-width: 991px) {
+  [data-section="journal-list"] .sc-header {
+    align-items: center;
+  }
+
+  [data-section="journal-list"] .card-container {
+    --column: 1;
+  }
+
+  .card[data-card="journal"] {
+    grid-column: span 1 !important;
+  }
+
+  .first-page .card[data-card="journal"]:nth-child(1) {
+    flex-direction: column;
+  }
+
+  .first-page .card[data-card="journal"]:nth-child(1) .card-image {
+    width: 100%;
+  }
+
+  .first-page .card[data-card="journal"]:nth-child(1) .card-content {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+
+  .pagination-numbers {
+    margin: 0 var(--spacing-md);
+  }
+}

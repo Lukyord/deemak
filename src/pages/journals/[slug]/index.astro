@@ -1,0 +1,25 @@
+---
+import "@/styles/journals.css";
+
+import { getJournals } from "@/services/journal";
+import type { Journal } from "~/sanity/sanity.types";
+
+import Layout from "@/layouts/Layout.astro";
+import Media from "@/components/ui/Media.astro";
+
+export async function getStaticPaths() {
+  const journals = await getJournals();
+  return journals.map((journal) => ({
+    params: { slug: journal.slug?.current },
+    props: { journal },
+  }));
+}
+
+const { journal } = Astro.props;
+
+const allJournals: Journal[] = await getJournals();
+---
+
+<Layout title={journal.title || "Journal"}>
+  <main></main>
+</Layout>
