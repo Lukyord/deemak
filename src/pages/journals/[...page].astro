@@ -12,10 +12,10 @@ export async function getStaticPaths({
 }: {
   paginate: any;
 }): Promise<GetStaticPathsResult> {
-  const journalsFetched = await getJournals();
-  const journals = Array(20).fill(journalsFetched[0]);
+  // const journalsFetched = await getJournals();
+  // const journals = Array(20).fill(journalsFetched[0]);
 
-  // const journals = await getJournals();
+  const journals = await getJournals();
 
   // Use Astro's paginate helper
   return paginate(journals, {

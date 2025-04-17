@@ -1,11 +1,12 @@
 ---
 import { urlFor } from "@/lib/sanity";
 import type { Journal } from "~/sanity/sanity.types";
+import type { RelatedJournal } from "@/types/journal";
 
 import Media from "@/components/ui/Media.astro";
 
 type Props = {
-  journal: Journal;
+  journal: Journal | RelatedJournal;
 };
 
 const { journal }: Props = Astro.props;

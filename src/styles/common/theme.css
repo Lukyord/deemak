@@ -132,7 +132,7 @@
   --logo-height: 3.4rem;
 
   --logo-height: 3.6rem;
-  --header-height: 5.6rem;
+  --header-height: 7rem;
   --footer-height: 0rem;
   --navi-height: 0;
 
@@ -1043,9 +1043,9 @@ html.no-touchevents .lang ul > li > a:not(.active):hover {
 
 /*CONTENT====================*/
 .entry-content {
-  --gap-row: var(--spacing-3lg);
-  --gap-column: var(--spacing-3lg);
-  --gap-content: var(--spacing-3lg);
+  --gap-row: var(--spacing-sm);
+  --gap-column: var(--spacing-sm);
+  --gap-content: var(--spacing-sm);
   --wp--preset--font-size--normal: var(--font-size-body);
   --wp--preset--font-size--small: var(--font-size-tagline);
   --wp--preset--font-size--medium: var(--font-size-h4);
@@ -2030,6 +2030,9 @@ html.no-touchevents *[class*="swiper-button-"]:hover:after {
   transform: translateX(0);
 }
 
+.card-container[data-card-layout="slider"] .swiper-nav .swiper-button-next {
+  transform: unset;
+}
 .swiper-pagination {
   --rgb: var(--color-white-rgb);
   line-height: 0;
@@ -2739,6 +2742,26 @@ section {
 }
 .sc-header.justify-between {
   justify-content: space-between;
+}
+.sc-header.line-border {
+  display: flex;
+  align-items: center;
+  grid-gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-3lg);
+}
+
+.sc-header.line-border:before,
+.sc-header.line-border:after {
+  content: "";
+  display: block;
+  width: 11vw;
+  height: 0;
+  border-top: var(--border-black);
+  flex-shrink: 0;
+}
+
+.sc-header.line-border:after {
+  flex-grow: 1;
 }
 
 .marquee {

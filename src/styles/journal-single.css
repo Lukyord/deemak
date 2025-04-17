@@ -1,0 +1,96 @@
+/* PAGE */
+/* PAGE: JOURNAL SINGLE */
+
+/* SECTION */
+/* SECTION: JOURNAL SINGLE */
+[data-section="journal-single"] .content {
+  display: flex;
+  grid-gap: var(--spacing-lg);
+}
+
+[data-section="journal-single"] .featured-image {
+  aspect-ratio: 1.5;
+  flex-shrink: 0;
+  width: 45%;
+  height: fit-content;
+}
+
+[data-section="journal-single"] .content-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  grid-gap: var(--spacing-xl);
+}
+
+[data-section="journal-single"] .content-body .header .date > * {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+[data-section="journal-single"] .content-body .header .ttl > * {
+  font-size: var(--font-size-h2) !important;
+  line-height: var(--line-height-h2);
+}
+
+[data-section="journal-single"] .content-body .author > * {
+  font-size: var(--font-size-small);
+}
+
+[data-section="journal-single"] .content-body .toc ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+  margin-top: var(--spacing-sm);
+}
+
+html.no-touchevents
+  [data-section="journal-single"]
+  .content-body
+  .toc
+  ol
+  a:hover {
+  color: var(--color-black);
+  text-decoration: underline;
+}
+
+[data-section="journal-single"] .content-body .entry-content .content-heading {
+  font-size: var(--font-size-h4) !important;
+  line-height: var(--line-height-h4);
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+@media (max-width: 991px) {
+  [data-section="journal-single"].sc-hero .sc-inner {
+    padding-top: var(--header-height);
+  }
+
+  [data-section="journal-single"] .content {
+    flex-direction: column;
+    grid-gap: var(--gap-section);
+  }
+
+  [data-section="journal-single"] .featured-image {
+    width: 100vw;
+    margin-left: calc(-1 * var(--spacing-container));
+  }
+
+  [data-section="journal-single"] .content-body {
+    grid-gap: var(--spacing-md);
+  }
+}
+
+/* SECTION: OTHER JOURNALS */
+[data-section="related-journals"] .card-container {
+  --column: 3.2;
+  --gap-y: var(--spacing-md);
+}
+
+[data-section="related-journals"] .swiper {
+  overflow: visible;
+}
+
+@media (max-width: 991px) {
+  [data-section="related-journals"] .card-container {
+    --column: 1.2;
+  }
+}

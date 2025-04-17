@@ -111,6 +111,26 @@ export default defineType({
       type: 'blockContent',
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: 'relatedJournals',
+      title: 'Related Journals',
+      type: 'array',
+      description: 'Select other journal articles that are related to this one',
+      of: [
+        {
+          type: 'reference',
+          to: [{type: 'journal'}],
+          options: {
+            // Prevent self-referencing
+            filter: ({document}) => ({
+              filter: '_id != $id',
+              params: {id: document._id},
+            }),
+          },
+        },
+      ],
+      validation: (rule) => rule.unique(), // Prevent duplicate selections
+    }),
   ],
 
   preview: {

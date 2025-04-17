@@ -1,0 +1,67 @@
+---
+import type { BlockContent } from "~/sanity/sanity.types";
+import { createSlug } from "@/components/ui/PortableTextComponents";
+
+type Props = {
+  content: BlockContent;
+};
+
+type TOCItem = {
+  text: string;
+  level: string;
+  children?: TOCItem[];
+};
+
+const { content } = Astro.props;
+
+function generateTOC(
+  content: {
+    [key: string]: any;
+    _type: string;
+  }[],
+) {
+  const filteredContent = content
+    .filter(
+      (block) => block._type === "block" && /^h[1-2]$/.test(block.style || ""),
+    )
+    .map((block) => ({
+      level: block.style,
+      text: block.children?.map((child: any) => child.text).join("") || "",
+    }));
+
+  return filteredContent;
+}
+
+function buildTOC(flatTOC: TOCItem[]): TOCItem[] {
+  const toc: TOCItem[] = [];
+  let lastH2: TOCItem | null = null;
+
+  for (const item of flatTOC) {
+    if (item.level === "h2") {
+      lastH2 = { ...item, children: [] };
+      toc.push(lastH2);
+    }
+  }
+
+  return toc;
+}
+
+const flatTOC = generateTOC(content);
+const structuredTOC = buildTOC(flatTOC);
+---
+
+<div class="toc">
+  <h4>Contents</h4>
+  <ol>
+    {
+      structuredTOC.map((item) => {
+        const slug = createSlug(item.text);
+        return (
+          <li>
+            <a href={`#${slug}`}>{item.text}</a>
+          </li>
+        );
+      })
+    }
+  </ol>
+</div>

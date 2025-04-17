@@ -77,6 +77,15 @@
     align-items: flex-start;
   }
 
+  .sc-header.line-border::before {
+    content: unset;
+  }
+
+  .sc-header.line-border {
+    flex-direction: row;
+    grid-gap: var(--spacing-3xs);
+  }
+
   /* HEADER ==================== */
 
   /* FOOTER ==================== */

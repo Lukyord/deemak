@@ -156,26 +156,6 @@ html.no-touchevents [data-section="service-info"] .read-more-btn:hover {
 }
 
 /* SECTION: SERVICE BENEFITS */
-.sc-header.line-border {
-  display: flex;
-  align-items: center;
-  grid-gap: var(--spacing-lg);
-}
-
-.sc-header.line-border:before,
-.sc-header.line-border:after {
-  content: "";
-  display: block;
-  width: 11vw;
-  height: 0;
-  border-top: var(--border-black);
-  flex-shrink: 0;
-}
-
-.sc-header.line-border:after {
-  flex-grow: 1;
-}
-
 [data-section="service-benefits"] .benefits {
   display: flex;
   flex-direction: column;
@@ -196,15 +176,6 @@ html.no-touchevents [data-section="service-info"] .read-more-btn:hover {
 }
 
 @media (max-width: 991px) {
-  .sc-header.line-border::before {
-    content: unset;
-  }
-
-  .sc-header.line-border {
-    flex-direction: row;
-    grid-gap: var(--spacing-3xs);
-  }
-
   [data-section="service-benefits"] .benefits {
     gap: var(--spacing-md);
     font-size: var(--font-size-h3);
@@ -236,10 +207,6 @@ html.no-touchevents [data-section="service-info"] .read-more-btn:hover {
   background-color: unset;
   backdrop-filter: unset;
   width: 100%;
-}
-
-.card-container[data-card-layout="slider"] .swiper-nav .swiper-button-next {
-  transform: unset;
 }
 
 @media (max-width: 991px) {

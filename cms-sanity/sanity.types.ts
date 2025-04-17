@@ -242,6 +242,13 @@ export type Journal = {
   }>
   publishedAt?: string
   body?: BlockContent
+  relatedJournals?: Array<{
+    _ref: string
+    _type: 'reference'
+    _weak?: boolean
+    _key: string
+    [internalGroqTypeReferenceTo]?: 'journal'
+  }>
 }
 
 export type Service = {

@@ -28,7 +28,6 @@
 
 .first-page .card[data-card="journal"]:nth-child(1) .card-image {
   width: 56%;
-  aspect-ratio: 1.4209558824;
   flex-shrink: 0;
 }
 
@@ -69,7 +68,7 @@
 }
 
 .card[data-card="journal"] .card-image {
-  aspect-ratio: 1.5854545455;
+  aspect-ratio: 1.5;
 }
 
 .card[data-card="journal"] .card-body {

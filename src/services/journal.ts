@@ -5,6 +5,7 @@ import type {
   JournalAuthor,
   JournalCategory,
 } from "~/sanity/sanity.types";
+import type { ExpandedJournal } from "@/types/journal";
 
 export async function getJournalCategories(): Promise<JournalCategory[]> {
   const query = `*[_type == "journalCategory"]{
@@ -21,7 +22,7 @@ export async function getJournalCategories(): Promise<JournalCategory[]> {
   return categories;
 }
 
-export async function getJournals(): Promise<Journal[]> {
+export async function getJournals(): Promise<ExpandedJournal[]> {
   const query = `*[_type == "journal"]{
       _id,
       _type,
@@ -31,7 +32,13 @@ export async function getJournals(): Promise<Journal[]> {
       title,
       description,
       slug,
-      author,
+      "author": author->{
+        _id,
+        name,
+        slug,
+        image,
+        bio
+      },
       mainImage,
       categories,
       publishedAt,
@@ -41,10 +48,22 @@ export async function getJournals(): Promise<Journal[]> {
         metaDescription,
         canonicalUrl,
         schemaMarkup
+      },
+      "relatedJournals": relatedJournals[]-> {
+        _id,
+        title,
+        description,
+        slug,
+        mainImage,
+        publishedAt,
+        "author": author->{
+          name,
+          image
+        }
       }
     }`;
 
-  const journals: Journal[] = await sanityClient.fetch(query);
+  const journals: ExpandedJournal[] = await sanityClient.fetch(query);
   return journals;
 }
 
@@ -65,7 +84,9 @@ export async function getJournalAuthors(): Promise<JournalAuthor[]> {
   return authors;
 }
 
-export async function getJournalBySlug(slug: string): Promise<Journal | null> {
+export async function getJournalBySlug(
+  slug: string,
+): Promise<ExpandedJournal | null> {
   const query = `*[_type == "journal" && slug.current == $slug][0]{
     _id,
     _type,
@@ -95,6 +116,18 @@ export async function getJournalBySlug(slug: string): Promise<Journal | null> {
       metaDescription,
       canonicalUrl,
       schemaMarkup
+    },
+    "relatedJournals": relatedJournals[]-> {
+      _id,
+      title,
+      description,
+      slug,
+      mainImage,
+      publishedAt,
+      "author": author->{
+        name,
+        image
+      }
     }
   }`;
 

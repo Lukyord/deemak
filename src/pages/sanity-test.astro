@@ -20,7 +20,7 @@ import type {
 
 const services: Service[] = await getServices();
 const categories: JournalCategory[] = await getJournalCategories();
-const journals: Journal[] = await getJournals();
+const journals = await getJournals();
 const authors: JournalAuthor[] = await getJournalAuthors();
 ---
 
@@ -49,7 +49,7 @@ const authors: JournalAuthor[] = await getJournalAuthors();
           <li>
             <h2>{journal.title}</h2>
             <p>{journal.publishedAt}</p>
-            {journal.author && <p>Author: {journal.author._ref}</p>}{" "}
+            {journal.author && <p>Author: {journal.author.name}</p>}{" "}
             <PortableTextBody
               body={journal.body}
               components={myPortableTextComponents}

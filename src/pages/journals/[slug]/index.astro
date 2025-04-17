@@ -1,11 +1,17 @@
 ---
+import "@/styles/journal-single.css";
 import "@/styles/journals.css";
 
+import { urlFor } from "@/lib/sanity";
 import { getJournals } from "@/services/journal";
-import type { Journal } from "~/sanity/sanity.types";
 
 import Layout from "@/layouts/Layout.astro";
 import Media from "@/components/ui/Media.astro";
+import PortableTextBody from "@/components/ui/PortableTextBody.astro";
+import { myPortableTextComponents } from "@/components/ui/PortableTextComponents";
+import ElTableOfContent from "@/components/journals/el-TableOfContent.astro";
+import ElJournalCard from "@/components/journals/el-JournalCard.astro";
+import type { Journal } from "~/sanity/sanity.types";
 
 export async function getStaticPaths() {
   const journals = await getJournals();
@@ -16,10 +22,106 @@ export async function getStaticPaths() {
 }
 
 const { journal } = Astro.props;
-
-const allJournals: Journal[] = await getJournals();
 ---
 
 <Layout title={journal.title || "Journal"}>
-  <main></main>
+  <main>
+    <section data-section="journal-single" class="sc-hero">
+      <div class="sc-inner sc-inner--precedes">
+        <div class="container">
+          <div class="content">
+            <div class="featured-image">
+              <Media
+                cover={urlFor(journal.mainImage?.asset?._ref || "").url()}
+                coverType="object-fit"
+                alt={journal.mainImage?.alt}
+                title={journal.mainImage?.title}
+              />
+            </div>
+
+            <div class="content-body">
+              <div class="header">
+                <div class="date">
+                  <p>
+                    {new Date(journal.publishedAt || "").toLocaleDateString()}
+                  </p>
+
+                  <div class="ttl">
+                    <h1>{journal.title}</h1>
+                  </div>
+                </div>
+              </div>
+
+              <div class="author">
+                <p>{journal.author?.name}</p>
+                <PortableTextBody
+                  body={journal.author?.bio}
+                  components={myPortableTextComponents}
+                />
+              </div>
+
+              {journal.body && <ElTableOfContent content={journal.body} />}
+
+              <PortableTextBody
+                body={journal.body}
+                components={myPortableTextComponents}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-section="related-journals">
+      <div class="sc-inner sc-inner--follows">
+        <div class="container">
+          <div class="sc-header line-border">
+            <div class="sc-ttl">
+              <h4>Related Journals</h4>
+            </div>
+          </div>
+
+          <div class="related-journal">
+            <div class="card-container" data-card-layout="slider">
+              <div class="swiper auto">
+                <div class="swiper-wrapper">
+                  {
+                    journal.relatedJournals &&
+                      journal.relatedJournals.map((j) => (
+                        <div class="swiper-slide">
+                          <ElJournalCard journal={j} />
+                        </div>
+                      ))
+                  }
+                </div>
+
+                <div class="swiper-nav">
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const targetId = anchor.getAttribute("href");
+      if (targetId) {
+        const target = document.querySelector(targetId);
+        if (target) {
+          target.scrollIntoView({
+            behavior: "smooth",
+          });
+        }
+      }
+    });
+  });
+</script>
