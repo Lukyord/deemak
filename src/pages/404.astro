@@ -1,10 +1,21 @@
 ---
+import "@/styles/not-found.css";
+
 import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="Deemak Thai Massage">
   <main>
-    <section style="height: 200vh;">404</section>
+    <section data-section="not-found" class="sc-hero">
+      <div class="sc-inner">
+        <div class="container">
+          <div class="content">
+            <h1>Sorry, the page could not be found</h1>
+            <a href="/" class="button">Back to Home</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </Layout>
 

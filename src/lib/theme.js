@@ -4,7 +4,7 @@ import WOW from "wow.js";
 import Splitting from "splitting";
 
 /*::* INIT THEME *::*/
-document.addEventListener("DOMContentLoaded", () => {
+function initTheme() {
   // Detect Resizing
   onWindowResize(
     () => {
@@ -21,10 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // Device detection
   const deviceDetector = detectDevices();
   deviceDetector.init();
-});
+}
 
 /*::* Animation *::*/
-document.addEventListener("DOMContentLoaded", () => {
+function initAnimations() {
   // WOW
   const wow = new WOW({ boxClass: "animate" });
   wow.init();
@@ -46,10 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
       word.innerHTML = "";
       word.appendChild(span);
     });
-});
+}
 
 /*::* SLIDER *::*/
-document.addEventListener("DOMContentLoaded", () => {
+function initSliders() {
   document.querySelectorAll(".swiper.auto").forEach((swiperEl) => {
     const slideTotal = swiperEl.querySelectorAll(".swiper-slide").length;
     const slideLoop = swiperEl.classList.contains("loop") && slideTotal > 1;
@@ -116,10 +116,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (slideAutoplay) swiper.autoplay.start();
     }, 100);
   });
-});
+}
 
 /*::* HEADER *::*/
-document.addEventListener("DOMContentLoaded", () => {
+function initHeader() {
   // Header Menu Toggle
   function initMenuToggle() {
     const html = document.documentElement;
@@ -230,10 +230,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initMenuToggle();
   initHeaderAnimation();
-});
+}
 
 /*::* COUNTUP *::*/
-document.addEventListener("DOMContentLoaded", function () {
+function initCountUp() {
   function easeOutCubicCustom(x) {
     return 1 - Math.pow(1 - x, 3);
   }
@@ -293,4 +293,31 @@ document.addEventListener("DOMContentLoaded", function () {
       checkIfInView(ratioInView, element, inViewCallback, () => {});
     });
   }
+}
+
+// Initial load
+document.addEventListener("DOMContentLoaded", () => {
+  initTheme();
+  initAnimations();
+  initSliders();
+  initHeader();
+  initCountUp();
+});
+
+// Astro page transitions
+document.addEventListener("astro:page-load", () => {
+  initAnimations();
+  initSliders();
+  initHeader();
+  initCountUp();
+});
+
+// Clean up before page transitions
+document.addEventListener("astro:before-swap", () => {
+  // Remove any event listeners or clean up animations if needed
+  document.querySelectorAll(".swiper.auto").forEach((swiperEl) => {
+    if (swiperEl.swiper) {
+      swiperEl.swiper.destroy();
+    }
+  });
 });

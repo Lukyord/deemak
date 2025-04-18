@@ -74,7 +74,7 @@
 }
 
 [data-section="service-info"] .description .description-2 {
-  max-height: 0;
+  height: 0;
   overflow: hidden;
   transition: var(--duration-x2) linear;
   margin-top: var(--spacing-xs);
@@ -84,7 +84,7 @@
 [data-section="service-info"]
   .description
   .description-2[data-expanded="true"] {
-  max-height: 100rem;
+  height: auto;
 }
 
 [data-section="service-info"] .description .read-more-btn {

@@ -1,0 +1,22 @@
+/* PAGE */
+/* PAGE: NOT FOUND */
+
+/* SECTION */
+/* SECTION: NOT FOUND */
+
+[data-section="not-found"] .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  grid-gap: var(--spacing-4xl);
+  text-wrap: balance;
+  text-align: center;
+}
+
+@media (max-width: 991px) {
+  [data-section="not-found"] .content > h1 {
+    font-size: var(--font-size-h2) !important;
+    line-height: var(--line-height-h2);
+  }
+}

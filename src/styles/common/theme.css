@@ -125,7 +125,7 @@
   --spacing-3xs: 1rem;
   --spacing-4xs: 0.8rem;
   --spacing-5xs: 0.6rem;
-  --container-max-width-xl: 188rem;
+  --container-max-width-xl: 128.8rem;
   --spacing-container: var(--spacing-2md);
   --gap-section: var(--spacing-4xl);
 
@@ -2784,7 +2784,7 @@ section {
   background-color: var(--color-peach);
   padding: var(--spacing-2sm) 0;
   justify-content: space-between;
-  animation: scroll 20s linear infinite;
+  animation: scroll 60s linear infinite;
 }
 
 .marquee:hover ul {

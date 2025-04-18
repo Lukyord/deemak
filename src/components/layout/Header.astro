@@ -88,12 +88,6 @@ const isIndexPage = Astro.url.pathname === "/";
   }
 
   #header:not(.at-top) {
-    background: linear-gradient(
-      180deg,
-      rgba(var(--color-peach-rgb), 1) 0%,
-      rgba(var(--color-peach-rgb), 1) 90%,
-      rgba(var(--color-peach-rgb), 0.25) 100%
-    );
   }
 
   #header:not(.index) .header-logo .index-logo {
@@ -131,20 +125,20 @@ const isIndexPage = Astro.url.pathname === "/";
     opacity: 0.5;
   }
 
-  .header-nav {
-    background: linear-gradient(
-      180deg,
-      rgba(var(--color-peach-rgb), 1) 0%,
-      rgba(var(--color-peach-rgb), 1) 90%,
-      rgba(var(--color-peach-rgb), 0.25) 100%
-    );
-  }
-
   .header-nav .index-logo {
     cursor: pointer;
   }
 
   @media (min-width: 992px) {
+    #header {
+      background: linear-gradient(
+        180deg,
+        rgba(var(--color-peach-rgb), 1) 0%,
+        rgba(var(--color-peach-rgb), 1) 90%,
+        rgba(var(--color-peach-rgb), 0.25) 100%
+      );
+    }
+
     .header-nav .index-logo {
       display: none;
     }
@@ -184,6 +178,12 @@ const isIndexPage = Astro.url.pathname === "/";
       display: flex;
       align-items: center;
       padding: var(--spacing-sm) var(--spacing-container);
+      background: linear-gradient(
+        180deg,
+        rgba(var(--color-peach-rgb), 1) 0%,
+        rgba(var(--color-peach-rgb), 1) 90%,
+        rgba(var(--color-peach-rgb), 0.25) 100%
+      );
     }
 
     .header-cta .book-mobile {
