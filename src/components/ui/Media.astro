@@ -20,7 +20,7 @@ const {
   title,
 } = Astro.props;
 
-const isImage = (url: string) => /\.(jpg|png)$/i.test(url);
+const isImage = (url: string) => /\.(jpg|png|webp)$/i.test(url);
 const isVideo = (url: string) => /\.(mp4)$/i.test(url);
 
 const isImageCover = isImage(cover);

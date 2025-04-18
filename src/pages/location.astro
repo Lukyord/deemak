@@ -1,10 +1,113 @@
 ---
+import "@/styles/location.css";
+
+import Media from "@/components/ui/Media.astro";
 import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="Deemak Thai Massage">
   <main>
-    <section style="height: 200vh;">Location</section>
+    <section data-section="location" class="sc-hero">
+      <div class="sc-inner sc-inner--bottom-extra">
+        <div class="sc-header justify-center">
+          <div class="sc-ttl">
+            <h1>Location</h1>
+          </div>
+        </div>
+
+        <div class="location">
+          <div class="map-image">
+            <Media
+              cover="/media/location.webp"
+              coverMobile="/media/location-mb.webp"
+              coverType="object-fit"
+              alt="Deemak Thai Massage Location"
+              title="Deemak Thai Massage Location"
+            />
+          </div>
+
+          <div class="location-info">
+            <div class="header">
+              <div class="ttl">
+                <h3>Where to find us</h3>
+              </div>
+              <div class="subttl">
+                <p>Nestled in a vibrant area, our spa is easily accessible.</p>
+              </div>
+            </div>
+
+            <div class="body">
+              <div class="grid-info">
+                <div class="grid-item">
+                  <div class="grid-ttl">
+                    <h5>Address</h5>
+                  </div>
+                  <div class="grid-content">
+                    <address>
+                      28 Upper Richmond Rd, East Putney, SW15 2RX
+                    </address>
+                  </div>
+                </div>
+
+                <div class="grid-item">
+                  <div class="grid-ttl">
+                    <h5>Telephone</h5>
+                  </div>
+                  <div class="grid-content">
+                    <a href="tel:+4427524434">+44 2752 4434</a>
+                  </div>
+                </div>
+
+                <div class="show-md"></div>
+
+                <div class="grid-item">
+                  <div class="grid-ttl">
+                    <h5>Email</h5>
+                  </div>
+                  <div class="grid-content">
+                    <a href="mailto:info@deemak.com">info@deemak.com</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="footer">
+              <a
+                href="https://maps.app.goo.gl/3FyrunMTXrFKHNhk9"
+                class="button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>Get Direction</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="location-marker">
+            <a
+              href="https://maps.app.goo.gl/3FyrunMTXrFKHNhk9"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="link-overlay"
+            >
+              &nbsp;
+            </a>
+
+            <div class="location-logo-wrapper">
+              <div class="location-logo">
+                <Media
+                  cover="/media/location-logo.webp"
+                  coverType="object-fit"
+                  alt="Deemak Thai Massage Logo"
+                  title="Deemak Thai Massage Logo"
+                />
+              </div>
+            </div>
+            <i class="ic ic-map-marker"></i>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </Layout>
 

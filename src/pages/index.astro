@@ -1,19 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 
-import { getServices } from "@/services/service";
-import {
-  getJournalCategories,
-  getJournals,
-  getJournalAuthors,
-} from "@/services/journal";
-import type {
-  Journal,
-  JournalAuthor,
-  JournalCategory,
-  Service,
-} from "~/sanity/sanity.types";
-
 import "@/styles/index.css";
 import Media from "@/components/ui/Media.astro";
 import ScHomepageHero from "@/components/homepage/sc-HomepageHero.astro";
@@ -21,11 +8,6 @@ import ScFeaturedTreatment from "@/components/homepage/sc-FeaturedTreatment.astr
 import ScHomepageInfo from "@/components/homepage/sc-HomepageInfo.astro";
 import ScContactCta from "@/components/homepage/sc-ContactCta.astro";
 import ScFeaturedJournals from "@/components/homepage/sc-FeaturedJournals.astro";
-
-const services: Service[] = await getServices();
-const categories: JournalCategory[] = await getJournalCategories();
-const journals: Journal[] = await getJournals();
-const authors: JournalAuthor[] = await getJournalAuthors();
 ---
 
 <Layout
