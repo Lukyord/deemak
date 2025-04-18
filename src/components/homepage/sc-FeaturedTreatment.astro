@@ -3,8 +3,6 @@ import ElServiceMarquee from "../common/el-ServiceMarquee.astro";
 
 import { getServices } from "@/services/service";
 import type { Service } from "~/sanity/sanity.types";
-import Media from "../ui/Media.astro";
-import { urlFor } from "@/lib/sanity";
 import ElFeaturedServiceCard from "./el-FeaturedServiceCard.astro";
 
 const services: Service[] = await getServices();

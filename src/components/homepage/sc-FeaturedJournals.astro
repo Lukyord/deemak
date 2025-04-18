@@ -1,9 +1,8 @@
 ---
 import { getJournals } from "@/services/journal";
-import type { Journal } from "~/sanity/sanity.types";
 import ElFeaturedJournalCard from "./el-FeaturedJournalCard.astro";
 
-const journals: Journal[] = await getJournals();
+const journals = await getJournals();
 ---
 
 <section data-section="featured-journals">
