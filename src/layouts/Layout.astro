@@ -1,6 +1,8 @@
 ---
 import BaseHead from "@/components/layout/BaseHead.astro";
 import BaseBodyWrapper from "@/components/layout/BaseBodyWrapper.astro";
+import { Toaster } from "@/components/common/Toaster";
+import "sonner/dist/styles.css";
 
 type Props = {
   title: string;
@@ -71,6 +73,7 @@ const {
     <BaseBodyWrapper>
       <slot />
     </BaseBodyWrapper>
+    <Toaster client:load />
   </body>
 </html>
 

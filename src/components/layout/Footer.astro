@@ -1,7 +1,7 @@
 ---
 import "./footer.css";
-
 import Media from "../ui/Media.astro";
+import NewsletterForm from "../newsletter/NewsletterForm";
 ---
 
 <footer id="footer">
@@ -44,22 +44,7 @@ import Media from "../ui/Media.astro";
         <h2>Don't miss a thing.</h2>
       </div>
 
-      <form action="">
-        <div class="input">
-          <input
-            type="email"
-            name="newsletter-email"
-            id="newsletter-email"
-            autocomplete="email"
-            required
-            placeholder="Your Email Address"
-          />
-        </div>
-
-        <button class="button" type="submit">
-          <i class="ic ic-mail-send"></i>
-        </button>
-      </form>
+      <NewsletterForm client:load />
     </div>
 
     <div class="footer-footer">
