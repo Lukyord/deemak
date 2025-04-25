@@ -1,3 +1,6 @@
+// Disable static pre-rendering for API route
+export const prerender = false;
+
 import type { APIRoute } from "astro";
 import { z } from "zod";
 
@@ -5,9 +8,6 @@ import { z } from "zod";
 const BEEHIIV_API_KEY = import.meta.env.BEEHIIV_API_KEY;
 const BEEHIIV_PUBLICATION_ID = import.meta.env.BEEHIIV_PUBLICATION_ID;
 const BEEHIIV_API_BASE = "https://api.beehiiv.com/v2";
-
-// Disable static pre-rendering for API route
-export const prerender = false;
 
 // Request validation schema
 export const newsletterSchema = z.object({
