@@ -164,7 +164,7 @@ const allServices: Service[] = await getServices();
 </Layout>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  function initReadMore() {
     const description2Container = document.querySelector(
       ".description-2-container",
     );
@@ -182,5 +182,11 @@ const allServices: Service[] = await getServices();
         });
       }
     }
-  });
+  }
+
+  // Initial load
+  document.addEventListener("DOMContentLoaded", initReadMore);
+
+  // Reinitialize after Astro page transitions
+  document.addEventListener("astro:page-load", initReadMore);
 </script>
