@@ -294,6 +294,26 @@ function initCountUp() {
   }
 }
 
+/*::* READMORE BUTTON *::*/
+function initReadMore() {
+  const description2Container = document.querySelector(
+    ".description-2-container",
+  );
+  if (description2Container) {
+    const description2 = description2Container.querySelector(".description-2");
+    const readMoreBtn = description2Container.querySelector(".read-more-btn");
+
+    if (description2 && readMoreBtn) {
+      readMoreBtn.addEventListener("click", () => {
+        const isExpanded =
+          description2.getAttribute("data-expanded") === "true";
+        description2.setAttribute("data-expanded", (!isExpanded).toString());
+        readMoreBtn.textContent = isExpanded ? "Read More" : "Show Less";
+      });
+    }
+  }
+}
+
 // Initial load
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
@@ -301,6 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initSliders();
   initHeader();
   initCountUp();
+  initReadMore();
 });
 
 // Astro page transitions
@@ -309,6 +330,7 @@ document.addEventListener("astro:page-load", () => {
   initSliders();
   initHeader();
   initCountUp();
+  initReadMore();
 });
 
 // Clean up before page transitions

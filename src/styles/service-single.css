@@ -29,6 +29,10 @@
   z-index: 2;
 }
 
+[data-section="banner-ttl"] .content .ttl {
+  text-align: center;
+}
+
 @media (max-width: 991px) {
   [data-section="banner-ttl"]:before {
     background: linear-gradient(
