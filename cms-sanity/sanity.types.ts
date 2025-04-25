@@ -276,7 +276,6 @@ export type Service = {
     title?: string
     _type: 'image'
   }
-  shortDescription?: string
   description1?: string
   description2?: string
   highlight?: string
