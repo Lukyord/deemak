@@ -107,21 +107,3 @@ const { journal } = Astro.props;
     </section>
   </main>
 </Layout>
-
-<script>
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", (e) => {
-      e.preventDefault();
-
-      const targetId = anchor.getAttribute("href");
-      if (targetId) {
-        const target = document.querySelector(targetId);
-        if (target) {
-          target.scrollIntoView({
-            behavior: "smooth",
-          });
-        }
-      }
-    });
-  });
-</script>

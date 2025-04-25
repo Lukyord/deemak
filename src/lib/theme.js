@@ -314,6 +314,28 @@ function initReadMore() {
   }
 }
 
+/*::* JOURNAL SMOOTH SCROLL *::*/
+
+function initJournalSmoothScroll() {
+  document
+    .querySelectorAll('[data-section="journal-single"] a[href^="#"]')
+    .forEach((anchor) => {
+      anchor.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const targetId = anchor.getAttribute("href");
+        if (targetId) {
+          const target = document.querySelector(targetId);
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        }
+      });
+    });
+}
+
 // Initial load
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
@@ -322,6 +344,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeader();
   initCountUp();
   initReadMore();
+  initJournalSmoothScroll();
 });
 
 // Astro page transitions
@@ -331,6 +354,7 @@ document.addEventListener("astro:page-load", () => {
   initHeader();
   initCountUp();
   initReadMore();
+  initJournalSmoothScroll();
 });
 
 // Clean up before page transitions
