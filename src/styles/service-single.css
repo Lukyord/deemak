@@ -89,7 +89,10 @@
 
 [data-section="service-info"] .description .read-more-btn {
   text-decoration: underline;
-  margin-bottom: var(--spacing-lg);
+}
+
+[data-section="service-info"] .description .button {
+  margin-top: var(--spacing-lg);
 }
 
 html.no-touchevents [data-section="service-info"] .read-more-btn:hover {
