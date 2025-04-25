@@ -13,6 +13,8 @@
   flex-shrink: 0;
   width: 45%;
   height: fit-content;
+  position: sticky;
+  top: calc(var(--header-height) + var(--spacing-xs));
 }
 
 [data-section="journal-single"] .content-body {
@@ -72,6 +74,7 @@ html.no-touchevents
   [data-section="journal-single"] .featured-image {
     width: 100vw;
     margin-left: calc(-1 * var(--spacing-container));
+    position: static;
   }
 
   [data-section="journal-single"] .content-body {
