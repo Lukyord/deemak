@@ -43,6 +43,7 @@
     "sonner": "^2.0.3",
     "splitting": "^1.1.0",
     "styled-components": "^6.1",
+    "swiper": "^11.2.6",
     "wow.js": "^1.2.2",
     "zod": "^3.24.3"
   },

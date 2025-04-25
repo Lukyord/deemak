@@ -2,6 +2,8 @@ import { onWindowResize, detectDevices, checkIfInView } from "./util.js";
 import { gsap } from "gsap";
 import WOW from "wow.js";
 import Splitting from "splitting";
+import Swiper from "swiper";
+import { Pagination, Navigation, Autoplay, EffectFade } from "swiper/modules";
 
 /*::* INIT THEME *::*/
 function initTheme() {
@@ -65,6 +67,7 @@ function initSliders() {
     ].findIndex((slide) => slide.classList.contains("active"));
 
     const swiper = new Swiper(swiperEl, {
+      modules: [Pagination, Navigation, Autoplay, EffectFade],
       resistanceRatio: 0,
       spaceBetween: 0,
       grabCursor: true,
@@ -110,11 +113,7 @@ function initSliders() {
       },
     });
 
-    setTimeout(() => {
-      swiper.init();
-      swiper.autoplay.stop();
-      if (slideAutoplay) swiper.autoplay.start();
-    }, 100);
+    if (slideAutoplay) swiper.autoplay.start();
   });
 }
 
