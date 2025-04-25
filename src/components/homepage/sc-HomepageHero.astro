@@ -1,8 +1,8 @@
 ---
 import Media from "../ui/Media.astro";
-import { getActiveAnnouncement } from "@/services/index";
+import { getLatestAnnouncement } from "@/services/index";
 
-const announcement = await getActiveAnnouncement();
+const announcement = await getLatestAnnouncement();
 ---
 
 <section data-section="homepage-hero">

@@ -26,21 +26,6 @@ export default defineType({
           scheme: ['http', 'https'],
         }),
     }),
-    defineField({
-      name: 'publishDate',
-      title: 'Publish Date',
-      type: 'datetime',
-      description: 'Date and time the announcement will be published.',
-      validation: (rule) => rule.required(),
-      initialValue: () => new Date().toISOString(),
-    }),
-    defineField({
-      name: 'isActive',
-      title: 'Active Announcement',
-      type: 'boolean',
-      description: 'Check this if the announcement should be displayed on the index page.',
-      initialValue: true,
-    }),
   ],
   preview: {
     select: {

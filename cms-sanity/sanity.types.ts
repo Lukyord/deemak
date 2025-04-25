@@ -90,8 +90,6 @@ export type IndexAnnouncement = {
   _rev: string
   text?: string
   link?: string
-  publishDate?: string
-  isActive?: boolean
 }
 
 export type Team = {

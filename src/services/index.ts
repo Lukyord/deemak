@@ -1,17 +1,15 @@
 import { sanityClient } from "sanity:client";
 import type { IndexAnnouncement } from "~/sanity/sanity.types";
 
-export async function getActiveAnnouncement(): Promise<IndexAnnouncement | null> {
-  const query = `*[_type == "indexAnnouncement" && isActive == true] | order(publishDate desc)[0] {
+export async function getLatestAnnouncement(): Promise<IndexAnnouncement | null> {
+  const query = `*[_type == "indexAnnouncement"] | order(_createdAt desc)[0] {
     _id,
     _type,
     _createdAt,
     _updatedAt,
     _rev,
     text,
-    link,
-    publishDate,
-    isActive
+    link
   }`;
 
   const announcement: IndexAnnouncement | null =
